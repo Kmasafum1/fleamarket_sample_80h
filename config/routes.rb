@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root 'home#top'
+  root 'items#index'
+  # root 'home#top'
   devise_for :users
 
 end
