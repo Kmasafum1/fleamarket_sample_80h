@@ -1,12 +1,166 @@
 * {
   box-sizing: border-box;
 }
-.registration_form {
-  margin-top: 10px;
+.container{
+  padding: 0 0 220px;
+  min-height: 100%;
+  background: #f5f5f5;
 }
+.single-header{
+  height: 130px;
+  &__progress{
+    padding: 40px 0 0 44px;
+    border: 0;
+  }
+  &__logo{
+    text-align: center;
+    margin: auto;
+    margin: 40px 0 0;
+    
+  }
+}
+.single-header__progress ol{
+  margin: 0;
+  display: flex;
+  &__active{
+    font-weight: 600;
+    color: #3CCACE;
+    min-width: 60px;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    font-size: 16px;
+  }
+}
+
+.registration_form {
+  display: block;
+}
+.login-panel{
+  width: 700px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  max-width: none;
+  width: 456px;
+}
+.login-noaccount {
+  text-align: center;
+  padding: 40px 64px;
+  &__btn{
+    text-decoration: none;
+    margin: 8px 0 0;
+    border-radius: 4px;
+    border: 1px solid #0099e8;
+    background: #0099e8;
+    color: #fff;
+    line-height: 10px;
+    display: block;
+    width: 300px;
+    height: 30px;
+    margin: auto;
+  }
+}
+.login-former{
+  display: flex;
+  margin: auto;
+  border-top: 1px solid #eee;
+  flex-direction: column;
+  &__google{
+    margin: 16px 0 0;
+    background: #fff; 
+    border: #979797 solid 1px;
+    color: #333;
+    width: 300px;
+    height: 30px;
+    margin: auto;
+    border-radius: 4px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  &__fackbook{
+    margin: 16px 0 0;
+    background: #385185; 
+    border: #979797 solid 1px;
+    color: #fff;
+    width: 300px;
+    height: 30px;
+    margin: auto;
+    border-radius: 4px;
+  }
+}
+.single-form{
+  padding: 24px 64px 32px;
+}
+.email{
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+}
+.password{
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  line-height: 1.5;
+  font-size: 16px;
+  margin-top: 20px;
+  align-items: center;
+}
+.actions{
+  margin: 24px 0 0;
+}
+.submit-btn{
+  background:#0099e8;
+  border: 1px solid #0099e8;
+  color: #fff;
+  border-radius: 4px;
+  width: 200px;
+  height: 30px;
+}
+.forget{
+  margin-top: 10px;
+  &__btn{
+    text-decoration: none;
+  }
+}
+.fillingform{
+  margin: 0 auto;
+  
+}
+
 h2{
   text-align: center;
+  font-size: 22px;
+  padding: 32px;
+  border-bottom: 1px solid;
 }
-.field{
+.single-inner{
+  padding: 24px 16px 40px;
+}
+.single-form{
+  max-width: 343px;
+  margin: 0 auto;
   text-align: center;
+}
+.field label{
+  font-weight: 600;
+  font-size: inherit;
+}
+.clearfix{
+  display: block;
+  display: flex;
+  justify-content: space-around;
+}
+.footer-firm {
+  display: flex;
+  justify-content: center;
+}
+.firmname{
+  display: flex;
+  justify-content: center;
 }
