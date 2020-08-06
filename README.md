@@ -38,7 +38,7 @@ Things you may want to cover:
 
 ### Association
 - has_one :sending_destination
-- has_one :cards
+- has_one :card
 - has_many :items
 
 ## cardsテーブル
@@ -84,16 +84,16 @@ Things you may want to cover:
 |brand_id|references|foreign_key: true|
 
 ### Association
-- belongs_to :item_image
-- has_many :category
-- has_many :brands
+- has_many :item_images
+- belongs_to :category
+- belongs_to :brand
 - belongs_to :user
 
 ## brandsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|name|||
+|name|string|null: false|
 
 ### Association
 - belongs_to :item
@@ -102,11 +102,11 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|Image|text|null: false|
+|image|text|null: false|
 |item_id|references|null: false, foreign_key: true|
 
 ### Association
-- has_many :items
+- belongs_to :item
 
 ## categoryテーブル
 
@@ -116,4 +116,4 @@ Things you may want to cover:
 |ancestry|||
 
 ### Association
-- belongs_to :item
+- has_many :items
