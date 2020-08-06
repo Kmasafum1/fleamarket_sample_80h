@@ -1,8 +1,3 @@
-@import "reset";
-@import "font-awesome-sprockets";
-@import "font-awesome";
-@import "modules/items";
-=======
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -18,5 +13,8 @@
  *= require_tree .
  *= require_self
  */
- @import "reset";
- @import "modules/users";
+@import "reset";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "modules/items";
+@import "modules/users";
