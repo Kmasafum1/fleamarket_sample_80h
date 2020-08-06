@@ -1,3 +1,8 @@
+@import "reset";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "modules/items";
+=======
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -15,4 +20,3 @@
  */
  @import "reset";
  @import "modules/users";
-
