@@ -46,7 +46,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|foreign_key: true|
-|payjp_id|||
+|payjp_id|references|null: false|
 
 ### Association
 - belongs_to :user
@@ -113,7 +113,7 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |name||null: false|
-|ancestry|||
+|ancestry|string|null: false|
 
 ### Association
 - has_many :items
