@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  def index
-  end
+  before_action :authenticate_user!
   def new
+    @user = User.new
   end
-  def   
+  def create
+  end
 end

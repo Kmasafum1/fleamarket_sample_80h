@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root 'home#top'
   devise_for :users
-
+  root to: "user#new"
+  resource :user
+  
 end
