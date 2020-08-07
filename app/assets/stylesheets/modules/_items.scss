@@ -327,6 +327,29 @@
           // 目安として表示するため記入しているあとで消す
           background-color: #bbbbbb;
           height: 150px;
+          &--image {
+            width: 220px;
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+            z-index: auto;
+          }
+          &--body {
+            background-color: blue;
+            color: #333;
+            padding: 16px;
+            .name {
+              overflow: hidden;
+              line-height: 1.5;
+              font-size: 16px;
+              text-align: left;
+            }
+            .deteails {
+              font-size: 16px;
+            }
+          
+          }
         }
       }
     }
