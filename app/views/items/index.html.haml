@@ -123,34 +123,44 @@
         %h3.title
           = link_to "#" do
             新規投稿商品
-      -# .productLists
-      -#   -@items.each do |item|
-      -#     .productList
-      -#       .productList--image
-      -#        = item.name
-      -#       .productList--body
-      -#         .name
-      -#         .deteails
-      -#     .productList
-      -#       .productList--image
-      -#       .productList--body
-      -#         .name
-      -#         .deteails
-      -#     .productList
-      -#       .productList--image
-      -#       .productList--body
-      -#         .name
-      -#         .deteails
-      -#     .productList
-      -#       .productList--image
-      -#       .productList--body
-      -#         .name
-      -#         .deteails
-      -#     .productList
-      -#       .productList--image
-      -#       .productList--body
-      -#         .name
-      -#         .deteails
+      .productLists
+        - @items.each do |item| 
+          .productList
+            .productList--image
+               
+            .productList--body
+              .name
+                = item.name
+              .deteails
+                = item.price
+          .productList
+            .productList--image
+            .productList--body
+              .name
+                = item.name
+              .deteails
+                = item.price
+          .productList
+            .productList--image
+            .productList--body
+              .name
+                = item.name
+              .deteails
+                = item.price
+          .productList
+            .productList--image
+            .productList--body
+              .name
+                = item.name
+              .deteails
+                = item.price
+          .productList
+            .productList--image
+            .productList--body
+              .name
+                = item.name
+              .deteails
+                = item.price
 
   %section.pickupContainer#last
     %h2.head
