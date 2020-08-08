@@ -19,11 +19,12 @@
             ブランド
       %ul.rightTag
         %li.rightTag1
-          = link_to "" do
-            ログイン
+          = link_to "ログイン", new_session_path(resource_name)
+          = link_to "ログアウト", destroy_user_session_path, method: :delete
         %li.rightTag2
-          = link_to "" do
-            新規会員登録
+          = link_to "新規会員登録", new_registration_path(resource_name) 
+        %li.rightTag3
+          = link_to "ログアウト", destroy_user_session_path, method: :delete
 
 .main
   %section.contents
@@ -124,11 +125,62 @@
           = link_to "#" do
             新規投稿商品
       .productLists
-        .productList
-        .productList
-        .productList
-        .productList
-        .productList
+        - @items.each do |item| 
+          .productList
+            .productList--image
+              = image_tag item.item_images[0].image, size: '220x150'
+            .productList--body
+              .name
+                - n = item.name
+                = "商品名：#{n}"
+              .deteails 
+                - p = item.price
+                = "価格：#{p}円"
+          .productList
+            .productList--image
+              = image_tag item.item_images[1].image, size: '220x150'
+            .productList--body
+              .name
+                - n = item.name
+                = "商品名：#{n}"
+              .deteails 
+                - p = item.price
+                = "価格：#{p}円"
+          .productList
+            .productList--image
+              = image_tag item.item_images[2].image, size: '220x150'    
+            .productList--body
+              .name
+                - n = item.name
+                = "商品名：#{n}"
+              .deteails 
+                - p = item.price
+                = "価格：#{p}円"
+            -#コメント
+              購入実装時に各productListに追加   
+            .items-box_photo__sold   
+              .items-box_photo__sold__inner
+                SOLD    
+          .productList
+            .productList--image
+              = image_tag item.item_images[3].image, size: '220x150'
+            .productList--body
+              .name
+                - n = item.name
+                = "商品名：#{n}"
+              .deteails 
+                - p = item.price
+                = "価格：#{p}円"
+          .productList
+            .productList--image
+              = image_tag item.item_images[4].image, size: '220x150'
+            .productList--body
+              .name
+                - n = item.name
+                = "商品名：#{n}"
+              .deteails 
+                - p = item.price
+                = "価格：#{p}円"
 
   %section.pickupContainer#last
     %h2.head
@@ -139,11 +191,58 @@
           = link_to "#" do
             アーカイバ
       .productLists
-        .productList
-        .productList
-        .productList
-        .productList
-        .productList
+        - @items.each do |item| 
+          .productList
+            .productList--image
+              = image_tag item.item_images[0].image, size: '220x150'
+            .productList--body
+              .name
+                - n = item.name
+                = "商品名：#{n}"
+              .deteails 
+                - p = item.price
+                = "価格：#{p}円"
+          .productList
+            .productList--image
+              = image_tag item.item_images[1].image, size: '220x150'
+            .productList--body
+              .name
+                - n = item.name
+                = "商品名：#{n}"
+              .deteails 
+                - p = item.price
+                = "価格：#{p}円"
+          .productList
+            .productList--image
+              = image_tag item.item_images[2].image, size: '220x150'
+            .productList--body
+              .name
+                - n = item.name
+                = "商品名：#{n}"
+              .deteails 
+                - p = item.price
+                = "価格：#{p}円"
+          .productList
+            .productList--image
+              = image_tag item.item_images[3].image, size: '220x150'
+            .productList--body
+              .name
+                - n = item.name
+                = "商品名：#{n}"
+              .deteails 
+                - p = item.price
+                = "価格：#{p}円"
+          .productList
+            .productList--image
+              = image_tag item.item_images[4].image, size: '220x150'
+            .productList--body
+              .name
+                - n = item.name
+                = "商品名：#{n}"
+              .deteails 
+                - p = item.price
+                = "価格：#{p}円"
+
 
 .banner
   .inner
