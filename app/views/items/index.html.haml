@@ -16,14 +16,22 @@
             カテゴリー
         %li.leftTag2
           = link_to "" do
-            ブランド
+            ブランド     
       %ul.rightTag
-        %li.rightTag1
-          = link_to "" do
-            ログイン
-        %li.rightTag2
-          = link_to "" do
-            新規会員登録
+        -if user_signed_in? 
+          %li.rightTag1
+            = link_to "マイページ", users_path
+          %li.rightTag2
+            = link_to "ログアウト", destroy_user_session_path, method: :delete
+        -else     
+          %li.rightTag1
+            = link_to new_user_session_path do
+              ログイン
+          %li.rightTag2
+            = link_to new_user_registration_path do
+              新規会員登録
+              
+
 
 .main
   %section.contents

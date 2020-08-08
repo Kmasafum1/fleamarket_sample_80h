@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable
   validates :nickname, presence: true
   devise :validatable, password_length: 7..128
-       
+  has_one :address
 end
