@@ -335,21 +335,40 @@
             margin: 0;
             z-index: auto;
           }
+          
           &--body {
-            background-color: green;
+            background-color: white;
             color: #333;
             padding: 16px;
-            .name {
+            .name, .deteails{
               overflow: hidden;
               line-height: 1.5;
               font-size: 16px;
               text-align: left;
             }
-            .deteails {
-              font-size: 16px;
+          }  
+          .items-box_photo__sold {
+            width: 0x;
+            height: 0px;
+            border-top: 65px solid #ea352d ;
+            border-right: 100px solid transparent;
+            border-bottom: 70px solid transparent;
+            border-left: 120px solid #ea352d ;
+            z-index:100;
+            position: relative;
+            top:-230.5px;
+            &__inner{
+              transform: rotate(-36deg);
+              font-size: 30px;
+              margin:-40px 0px 0px -90px;
+              color: #fff;
+              letter-spacing: 2px;
+              font-weight: 600;
             }
-          
-          }
+          } 
+            // .deteails {
+            //   font-size: 16px;
+            // }
         }
       }
     }
