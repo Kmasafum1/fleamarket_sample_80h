@@ -2,15 +2,6 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :basic_auth, if: :production?
 
-  # def after_sign_in_path_for(resource)
-  #   user_path
-  #   # サインインした後にユーザーページに飛ぶように設定
-  # end
-  # def after_sign_up_path_for(resource)
-  #   user_path
-  #   # サインアップした後にユーザーページに飛ぶように設定
-  # end
-
   private
 
   def production?
