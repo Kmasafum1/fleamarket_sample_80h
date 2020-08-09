@@ -10,6 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
+ActiveRecord::Schema.define(version: 2020_08_08_063910) do
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "prefecture", null: false
+    t.string "city", null: false
+    t.text "address", null: false
+    t.string "building_name", null: false
+    t.integer "phone_number"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "postal_code"
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+
 ActiveRecord::Schema.define(version: 2020_08_07_055943) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -47,6 +62,7 @@ ActiveRecord::Schema.define(version: 2020_08_07_055943) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["category_id"], name: "index_items_on_category_id"
+
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -67,7 +83,10 @@ ActiveRecord::Schema.define(version: 2020_08_07_055943) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+
+  add_foreign_key "addresses", "users"
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
+
 end
