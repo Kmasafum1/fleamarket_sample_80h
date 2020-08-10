@@ -1,0 +1,186 @@
+.wrapper {
+  background-color: rgb(245, 245, 245);
+  .wrapper__top {
+    display: flex;
+    flex-direction: column;
+    .header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 128px;
+      .header__icon {
+        color: inherit;
+        text-decoretion: none;
+        .aBtn {
+          height: 49px;
+          width: 185px;
+        }
+      }
+    }
+  }
+  
+  .contents {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    .content {
+      background-color: rgb(255, 255, 255);
+      margin: 0 auto;
+      width: 700px;
+      height: 901px;
+      .content__top {
+        height: 98px;
+        margin: 0 162.5px;
+        padding: 32px 16px;
+        h2 {
+          border-style: none;
+          text-align: 34px;
+          font-size: 24px;
+          font-weight: bold;
+        }
+      }
+      .content__img {
+        display: flex;
+        width: 375px;
+        height: 145px;
+        margin: 0 162.5px;
+        padding: 32px 16px;
+        .tagimg {
+          width: 80px;
+          height: 80px;
+          background-color: #c0c0c0;
+        }
+        .textimg {
+          width: 247px;
+          height: 80px;
+          margin-left: 16px;
+          background-color: #808080;
+        }
+      }
+      .content__statement {
+        margin: 0 162.5px;
+        padding: 32px 16px;
+        display: flex;
+        height: 221px;
+        background-color: #FFFFCC	;
+        .statement {
+          .amount {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            .text {
+              font-weight: bold;
+              font-size: 18px;
+            }
+            .integer {
+              font-weight: bold;
+              font-size: 24px
+            }
+          }
+          .point {
+            display: flex;
+            justify-content: space-between;
+            .text {
+              font-size: 14px;
+            }
+            .integer {
+              font-size: 12px;
+            }
+          }
+          .balance {
+            display: flex;
+            justify-content: space-between;
+            .text {
+              font-size: 14px;
+            }
+            .integer {
+              font-size: 12px;
+            }
+          }
+          .comment {
+            margin-top: 16px;
+            .text {
+              font-size: 12px;
+            }
+          }
+        }
+      }
+      .content__payment {
+        margin: 0 162.5px;
+        padding: 32px 16px;
+        height: 111px;
+        background-color: #CCFFCC;
+        .text {
+          font-size: 14px;
+          margin-bottom: 16px;
+        }
+        comment {
+          font-size: 14px;
+        }
+      }
+      .content__address {
+        margin: 0 162.5px;
+        padding: 32px 16px;
+        height: 144px;
+        background-color: #FFFF99;
+        .shipping__text {
+          display: flex;
+          justify-content: space-between;
+          .name, .text {
+            font-size: 14px;
+          }
+        }
+        .shipping__address {
+          .integer, .name, .number {
+            font-size: 14px;
+          }
+        }
+      }
+      .content_btn {
+        margin: 0 162.5px;
+        padding: 32px 16px;
+        .text {
+          color: #ff0211;
+          margin-bottom: 24px;
+          font-size: 14px;
+        }
+        .btn {
+          .buy_btn {
+            width: 293px;
+            height: 46px;
+            font-size: 17px;
+            padding: 0 24px;
+            border: 1px solid #888888;
+            border-radius: 8px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  .footer {
+    background-color: rgb(245, 245, 245);
+    color: #333333;
+    .footer__top {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+      .footer__text {
+        font-size: 12px;
+        margin: 16px 0 0 16px;
+      }
+      .footer__logo {
+        .bBtn {
+        height: 65px;
+        margin-bottom: 8px;
+        opacity: 0.1;
+        }
+      }
+      .footer__copyright {
+        font-size: 12px;
+      }
+    }
+  }
+}
