@@ -8,8 +8,9 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.string :sipping_area, null: false
       t.string :sipping_days, null: false
       t.integer :price, null: false
-      t.integer :category_id, null: false
-      t.integer :brand_id
+      t.references :user, foreign_key: true
+      t.integer :category, null: false, foreign_key: true
+      t.integer :brand, foreign_key: true
       t.timestamps
     end
   end
