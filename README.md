@@ -37,7 +37,7 @@ Things you may want to cover:
 |birthday|integer|null: false|
 
 ### Association
-- has_one :sending_destination
+- has_one :address
 - has_one :card
 - has_many :items
 
@@ -51,7 +51,7 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 
-## sending_destinationsテーブル
+## addressテーブル
 
 |Column|Type|Options|
 |------|----|-------|
@@ -96,7 +96,7 @@ Things you may want to cover:
 |name|string|null: false|
 
 ### Association
-- belongs_to :item
+- has_many :items
 
 ## item_imagesテーブル
 
