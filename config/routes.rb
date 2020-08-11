@@ -22,7 +22,6 @@ Rails.application.routes.draw do
     
 
   resources :buyers, only: [:index]
-  resource :users, only: [:show, :edit, :update]
 
   resources :items, only: [:index]
 end
