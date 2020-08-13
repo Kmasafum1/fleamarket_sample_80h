@@ -18,26 +18,35 @@
           %li.leftTag2
             = link_to "" do
               ブランド
-  %div.payment            
-    %div.payment__form
-      .payment__title
-        %h3 お支払い方法
-    %div.creditcard
-      .creditcard__title
-        クレジットカード
-      .creditcard__post
-        = link_to "#", class: :newStage do
-          新規カードを登録する
-  .footbar
-    .footbar__title
-      設定
-    %ul.footbar__list
-      %li.footbar__mypage
-        = link_to users_path, class: :footbar__link do
-          マイページ
-      %li.footbar__logout
-        = link_to "/users/logout", class: :footbar__link do
-          ログアウト
+  %div.user-show
+    %div.user-show__leftbar
+      マイページ一覧
+      %div.user-show__leftbar__contents
+        %div.user-show__leftbar__contents__title
+          = link_to "#" do
+            出品する
+      %div.user-show__leftbar__contents
+        %div.user-show__leftbar__contents__title
+          = link_to "#" do
+            出品した商品-出品中
+      %div.user-show__leftbar__contents
+        %div.user-show__leftbar__contents__title
+          = link_to "#" do
+            出品した商品-売却済み
+      %div.user-show__leftbar__contents
+        %div.user-show__leftbar__contents__title
+          = link_to "#" do
+            購入した商品-過去の取引
+      %div.user-show__leftbar__settings
+        %h1 設定
+        %div.user-show__leftbar__settings__bar
+          %div.user-show__leftbar__settings__title
+            = link_to "#" do
+              支払い方法
+        %div.user-show__leftbar__settings__bar
+          %div.user-show__leftbar__settings__title
+            = link_to "/users/logout" do
+              ログアウト
 .footer
   %ul.footerContents
     %li.content
