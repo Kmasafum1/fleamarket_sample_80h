@@ -6,14 +6,14 @@ Rails.application.routes.draw do
   resources :items, only: [:index] 
    
   
-  resources :categories, only: [:index] do
+  resources :categories, only: [:index] 
     # collection do
     #   get 'search_child'
     #   get 'search_grandchild'
     #   # get 'search_child', defaults: { format: 'json' }
     #   # get 'search_grandchild', defaults: { format: 'json' }
     # end
-  end  
+  # end  
 end
 
   resources :exhibition, only: :new
@@ -37,5 +37,5 @@ end
 
   resources :buyers, only: [:index]
 
-  resources :items, only: [:index]
+  
 end
