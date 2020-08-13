@@ -6,7 +6,7 @@
     .login-panel
       %h2 会員情報入力
       .single-inner
-        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = form_for(@user, url: user_registration_path) do |f|
           = render "devise/shared/error_messages", resource: resource
           .single-form
             .field
@@ -64,8 +64,7 @@
               = link_to "利用規約", "#" , target:"_blank"
               に同意したものとみなします
               %br/
-              = f.submit '次へ', class: "btn-blue", url: "address_path"
+              = f.submit '次へ', class: "btn-blue", url: "addresses_path"
               %br/
               = render "devise/shared/links"
   = render "devise/registrations/registration_footer"
-          

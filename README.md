@@ -34,10 +34,10 @@ Things you may want to cover:
 |first_name|string|null: false|
 |family_name_kana|string|null: false|
 |first_name_kana|string|null: false|
-|birthday|integer|null: false|
+|birthday|data|null: false|
 
 ### Association
-- has_one :sending_destination
+- has_one :address
 - has_one :card
 - has_many :items
 
@@ -51,18 +51,15 @@ Things you may want to cover:
 ### Association
 - belongs_to :user
 
-## sending_destinationsテーブル
+## addressテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|family_name|string|null: false|
-|first_name|string|null: false|
-|family_name_kana|string|null: false|
-|first_name_kana|string|null: false|
-|post_code|integer(7)|null: false|
-|prefecture|string|null: false|
+|user_id|references|foreign_key: true|
+|postal_code|integer(7)|null: false|
+|prefecture|integer|null: false|
 |city|string|null: false|
-|address|string|null: false|
+|address|text|null: false|
 |building_name|string||
 |phone_number|integer||
 
@@ -82,6 +79,7 @@ Things you may want to cover:
 |price|integer|null; false|
 |category_id|references|null: false, foreign_key: true|
 |brand_id|references|foreign_key: true|
+|user_id|references|foreign_key: true|
 
 ### Association
 - has_many :item_images
@@ -96,7 +94,7 @@ Things you may want to cover:
 |name|string|null: false|
 
 ### Association
-- belongs_to :item
+- has_many :items
 
 ## item_imagesテーブル
 

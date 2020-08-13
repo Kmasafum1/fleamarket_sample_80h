@@ -1,0 +1,255 @@
+@mixin required_style() {
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: bold;
+
+  .necessary {
+    padding: 2px;
+    background-color: #3ccace;
+    color: white;
+  }
+}
+
+@mixin input_style() {
+  width: 100%;
+  height: 48px;
+  border: solid 1px black;
+  border-radius: 5px;
+}
+
+@mixin submit_style() {
+  width: 360px;
+  height: 48px;
+  margin: 0 auto 10px;
+  color: white;
+  text-align: center;
+  display: block;
+  border: none;
+  border-radius: 5px;
+}
+
+
+.body {
+  background-color: #f8f8f8;
+
+  .exhibition_header {
+    height: 128px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .icon {
+      height: 40px;
+      text-align: center;
+
+      img {
+        width: 140px;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .exhibition_main {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: white;
+
+    .image {
+      padding: 40px;
+      border-bottom: solid 2px #f8f8f8;
+
+      .required_item {
+        @include required_style();
+      }
+
+      .image_explanation {
+        margin-bottom: 10px;
+      }
+
+      .image_photo {
+        height: 150px;
+        display: flex;
+        border-top: dashed 1px black;
+        border-bottom: dashed 1px black;
+        border-left: dashed 1px black;
+
+        .image_upload {
+          width: 124px;
+          border-right: dashed 1px black;
+          position: relative;
+
+          &__file {
+            width: 100%;
+            font-size: 10px;
+            position: absolute;
+          }
+        }
+      }
+    }
+
+    .item {
+      padding: 40px;
+      border-bottom: solid 2px #f8f8f8;
+
+      .required_item {
+        @include required_style();
+      }
+
+      .item_name {
+        @include input_style();
+        margin-bottom: 10px;
+      }
+
+      .required_item {
+        @include required_style();
+      }
+
+      .item_explanation {
+        width: 100%;
+        height: 154px;
+        border: solid 1px black;
+        border-radius: 5px;
+      }
+    }
+
+    .categories {
+      padding: 40px;
+      border-bottom: solid 2px #f8f8f8;
+
+      .required_item {
+        @include required_style();
+      }
+
+      .category {
+        @include input_style();
+        margin-bottom: 10px;
+      }
+
+      .required_item {
+        @include required_style();
+      }
+
+      .brand_name {
+        @include input_style();
+        margin-bottom: 10px;
+      }
+
+      .required_item {
+        margin-bottom: 10px;
+        font-size: 15px;
+        font-weight: bold;
+        
+        .necessary_brand {
+          padding: 2px;
+          background-color: lightgrey;
+          color: white;
+        }
+      }
+
+      .condition {
+        @include input_style();
+      }
+    }
+
+    .delivery {
+      padding: 40px;
+      border-bottom: solid 2px #f8f8f8;
+
+      .required_item {
+        @include required_style();
+      }
+
+      .cost {
+        @include input_style();
+        margin-bottom: 10px;
+      }
+
+      .required_item {
+        @include required_style();
+      }
+
+      .area {
+        @include input_style();
+        margin-bottom: 10px;
+      }
+
+      .required_item {
+        @include required_style();
+      }
+
+      .days {
+        @include input_style();
+      }
+    }
+
+    .price {
+      padding: 40px;
+      border-bottom: solid 2px #f8f8f8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .required_item {
+        @include required_style();
+      }
+
+      .saleprice {
+
+        .input_price {
+          height: 48px;
+          width: 285px;
+          text-align: end;
+        }
+      }
+    }
+
+    .exhibition {
+      padding: 40px;
+      margin: 0 auto 32px;
+
+      .exhibition_content {
+
+        .execution {
+          @include submit_style();
+          background-color: #3ccace;
+        }
+      
+        .return {
+          @include submit_style();
+          background-color: lightgray;
+        }
+      }
+
+      .precautions {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .exhibition_footer {
+    height: 128px;
+
+    .term_list {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .icon {
+      height: 40px;
+      text-align: center;
+
+      img {
+        width: 140px;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+
+    .copyright {
+      text-align: center;
+      font-size: 15px;
+    }
+  }
+}

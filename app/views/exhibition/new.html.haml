@@ -1,0 +1,79 @@
+.body
+  .exhibition_header
+    .icon
+      = link_to root_path do
+        = image_tag ("logo.png")
+  .exhibition_main
+    .image
+      .required_item
+        出品画像
+        %span.necessary 必須
+      .image_explanation
+        最大5枚までアップロード
+      .image_photo
+        .image_upload
+          %input{class: "image_upload__file", type: "file"}
+        .image_upload
+          %input{class: "image_upload__file", type: "file"}
+        .image_upload
+          %input{class: "image_upload__file", type: "file"}
+        .image_upload
+          %input{class: "image_upload__file", type: "file"}
+        .image_upload
+          %input{class: "image_upload__file", type: "file"}
+    .item
+      .required_item
+        商品名
+        %span.necessary 必須
+      %input.item_name
+      .required_item
+        商品の説明
+        %span.necessary 必須
+      %textarea.item_explanation
+    .categories
+      .required_item
+        カテゴリー
+        %span.necessary 必須
+      %select.category
+      .required_item
+        ブランド
+        %span.necessary_brand 任意
+      %input.brand_name
+      .required_item
+        状態
+        %span.necessary 必須
+      %select.condition
+    .delivery
+      .required_item
+        配送料の負担
+        %span.necessary 必須
+      %select.cost
+      .required_item
+        発送元の地域
+        %span.necessary 必須
+      %select.area
+      .required_item
+        発送までの日数
+        %span.necessary 必須
+      %select.days
+    .price
+      .required_item
+        価格
+        %span.necessary 必須
+      .saleprice
+        %span ¥
+        %input{class: "input_price", type: "number", placeholder: "0"}
+    .exhibition
+      .exhibition_content
+        %button{class: "execution", type: "submit"}出品する
+        %button{class: "return", type: "submit", url: "/"}もどる
+      .precautions 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+  .exhibition_footer
+    %ul.term_list
+      %li= link_to "プライバシーポリシー"
+      %li= link_to "FURIMA利用規約"
+      %li= link_to "特定商取引に関する表記"
+    .icon
+      = link_to root_path do
+        = image_tag ("logo.png")
+    %p.copyright © FURIMA, Inc.
