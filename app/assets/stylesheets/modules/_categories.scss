@@ -9,7 +9,7 @@
     background-color: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
     position: relative;
-    left:30px;
+    left:0px;
     width: 150px;
     z-index: 1;
    
@@ -17,10 +17,10 @@
       display: none;
       
     
-      // list-style: none;
-      // text-align: center;
-      // cursor: pointer;
-      // text-align: center;
+      list-style: none;
+      text-align: center;
+      cursor: pointer;
+      text-align: center;
     }
    
   
@@ -39,7 +39,7 @@
       width: 224px;
       z-index: 2;
       li.category__child--name {
-        
+        display: none;
         // cursor: pointer;
         // text-align: center
       }
