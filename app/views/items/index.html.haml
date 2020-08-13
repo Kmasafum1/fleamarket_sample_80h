@@ -12,8 +12,22 @@
     .headerInner__nav
       %ul.leftTag
         %li.leftTag1
-          = link_to "" do
-            カテゴリー
+          = link_to "カテゴリー", categories_path
+          .category-box
+            %ul.category__parent
+              - @parents.each do |parent|
+                %li.category__parent--name
+                  = parent.name
+                  %ul.category__child
+                    - parent.children.each do |child|
+                      %li.category__child--name
+                        = child.name 
+                        %ul.category__grandchild
+                          - child.children.each do |grandchild|
+                            %li.category__grandchild--name
+                              = grandchild.name
+          
+           
         %li.leftTag2
           = link_to "" do
             ブランド

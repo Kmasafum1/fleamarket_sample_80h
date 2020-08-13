@@ -56,7 +56,7 @@
         display: flex;
         height: 30px;
         .leftTag1 {
-          width: 100%;
+          width: 120%;
           a{
             color: black;
             display: block;
@@ -107,7 +107,7 @@
   width: 100%;
   .contents{
     height: 560px;
-    background-image: url("bg-mainVisual-pict_pc.jpg");
+    // background-image: url("bg-mainVisual-pict_pc.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top center;
