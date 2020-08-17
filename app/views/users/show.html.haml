@@ -4,3 +4,20 @@
 %p
   メールアドレス 
 
+%ul.setting-lists
+
+  %li.list-setting
+    .list-setting__info
+      = link_to new_card_path do
+        .card-branch
+          %span クレジットカード登録
+          = icon('fas','angle-right') 
+      = link_to card_path(current_user.id) do
+        .card-branch
+          %span クレジットカード詳細・削除
+          = icon('fas','angle-right')
+  %li.list-setting
+    .list-setting__info
+      =link_to "#" do
+        ログアウト
+    = icon('fas','angle-right')
