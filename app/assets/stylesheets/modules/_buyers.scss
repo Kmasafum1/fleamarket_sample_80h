@@ -145,19 +145,25 @@
           margin-bottom: 24px;
           font-size: 14px;
         }
-        .btn {
-          .buy_btn {
-            width: 293px;
-            height: 46px;
-            font-size: 17px;
-            padding: 0 24px;
-            border: 1px solid #888888;
-            border-radius: 8px;
-            cursor: pointer;
-          }
+        .buy_btn, .soldout_btn {
+          width: 293px;
+          height: 46px;
+          font-size: 17px;
+          padding: 0 24px;
+          border: 1px solid #888888;
+          color: white;
+          border-radius: 8px;
         }
       }
     }
+  }
+  #buy {
+    background-color: #3ccace;
+    cursor: pointer;
+  }
+  #soldout {
+    background-color: #cccccc;
+    text-align: center;
   }
 
   .footer {
