@@ -13,7 +13,6 @@ class CardsController < ApplicationController
 
   def pay
     Payjp.api_key = Rails.application.credentials.PAYJP[:secret_access_key]
-    # payjpのトークンがあるか確認
     if params["payjp_token"].blank?
       redirect_to action: "new"
     else
@@ -23,7 +22,6 @@ class CardsController < ApplicationController
         card: params["payjp_token"],
         metadata: {user_id: current_user.id}
       )
-      # トークン化した情報をcardsテーブルに登録
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
         redirect_to card_path(current_user.id)

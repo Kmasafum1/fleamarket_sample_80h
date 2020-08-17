@@ -1,9 +1,8 @@
 class BuyersController < ApplicationController
   require "payjp"
-  before_action :set_card
+  before_action :set_card, :set_item
 
   def index
-    @item = Item.find(params[:item_id])
     unless user_signed_in?
       redirect_to user_session_path
       return
@@ -36,7 +35,6 @@ class BuyersController < ApplicationController
   end
 
   def pay
-    @item = Item.find(params[:item_id])
     Payjp.api_key = Rails.application.credentials.PAYJP[:secret_access_key]
     charge = Payjp::Charge.create(
       amount: @item.price,
@@ -55,4 +53,7 @@ class BuyersController < ApplicationController
   def set_card
     @card = Card.find_by(user_id: current_user.id)
   end
+
+  def set_item
+    @item = Item.find(params[:item_id])
 end
