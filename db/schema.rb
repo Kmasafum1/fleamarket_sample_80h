@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_08_15_031315) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.string "ancestry"
+    t.string "ancestry", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -64,9 +64,9 @@ ActiveRecord::Schema.define(version: 2020_08_15_031315) do
     t.string "sipping_days", null: false
     t.integer "price", null: false
     t.bigint "category_id", null: false
-    t.bigint "brand_id"
     t.bigint "seller_id"
     t.bigint "buyer_id"
+    t.bigint "brand_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["brand_id"], name: "index_items_on_brand_id"
@@ -103,4 +103,6 @@ ActiveRecord::Schema.define(version: 2020_08_15_031315) do
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "users", column: "buyer_id"
   add_foreign_key "items", "users", column: "seller_id"
+  add_foreign_key "items", "brands"
+  add_foreign_key "items", "categories"
 end
