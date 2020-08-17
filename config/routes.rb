@@ -7,17 +7,19 @@ Rails.application.routes.draw do
    
   
   resources :categories, only: [:index] 
-    # collection do
-    #   get 'search_child'
-    #   get 'search_grandchild'
-    #   # get 'search_child', defaults: { format: 'json' }
-    #   # get 'search_grandchild', defaults: { format: 'json' }
+   
+
+
+  resources :exhibition, only: :new do
+    collection do
+      get 'category_children', defaults: { format: 'json' }
+      get 'category_grandchildren', defaults: { format: 'json' }
+    end
+    # member do
+    #   get 'category_children', defaults: { format: 'json' }
+    #   get 'category_grandchildren', defaults: { format: 'json' }
     # end
-  # end  
-
-
-  resources :exhibition, only: :new
-
+  end  
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',

@@ -3,24 +3,24 @@
     .icon
       = link_to root_path do
         = image_tag ("logo.png")
-  .exhibition_main
+  = form_with model: @item, class: "exhibition_main", id: "item-form" do |f|      
     .image
       .required_item
         出品画像
         %span.necessary 必須
       .image_explanation
         最大5枚までアップロード
-      .image_photo
-        .image_upload
-          %input{class: "image_upload__file", type: "file"}
-        .image_upload
-          %input{class: "image_upload__file", type: "file"}
-        .image_upload
-          %input{class: "image_upload__file", type: "file"}
-        .image_upload
-          %input{class: "image_upload__file", type: "file"}
-        .image_upload
-          %input{class: "image_upload__file", type: "file"}
+      -# .image_photo
+      -#   .image_upload
+      -#     %input{class: "image_upload__file", type: "file"}
+      -#   .image_upload
+      -#     %input{class: "image_upload__file", type: "file"}
+      -#   .image_upload
+      -#     %input{class: "image_upload__file", type: "file"}
+      -#   .image_upload
+      -#     %input{class: "image_upload__file", type: "file"}
+      -#   .image_upload
+      -#     %input{class: "image_upload__file", type: "file"}
     .item
       .required_item
         商品名
@@ -34,8 +34,16 @@
       .required_item
         カテゴリー
         %span.necessary 必須
-      %select.category
-      .required_item
+    
+        
+
+      = f.collection_select :category, @category, :id, :name, {prompt: "選択してください"}, {class: "category"}
+      = f.collection_select :category, @category, :id, :name, {prompt: "選択してください"}, {class: "categorychild"}
+      = f.collection_select :category, @category, :id, :name, {prompt: "選択してください"}, {class: "categorygrandchild"}
+      -# %select.categorychild
+
+      -# %select.categorygrandchild
+      .required_ite
         ブランド
         %span.necessary_brand 任意
       %input.brand_name
