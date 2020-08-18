@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :description, :condition, :delivery_cost, :sipping_area, :sipping_days, :price, :category_id, :user_id, :brand_id, item_images_attributes: [:image, :_destroy, :id])
   end
   
-  def set_product
+  def set_item
     @item = Item.find(params[:id])
   end
 end
