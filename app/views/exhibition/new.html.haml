@@ -40,9 +40,7 @@
       = f.collection_select :category, @category, :id, :name, {prompt: "選択してください"}, {class: "category"}
       = f.collection_select :category, @category, :id, :name, {prompt: "選択してください"}, {class: "categorychild"}
       = f.collection_select :category, @category, :id, :name, {prompt: "選択してください"}, {class: "categorygrandchild"}
-      -# %select.categorychild
-
-      -# %select.categorygrandchild
+    
       .required_ite
         ブランド
         %span.necessary_brand 任意
