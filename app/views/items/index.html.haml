@@ -12,8 +12,20 @@
     .headerInner__nav
       %ul.leftTag
         %li.leftTag1
-          = link_to "" do
-            カテゴリー
+          = link_to "カテゴリー",  categories_path
+          %ul.category__parent
+            - @parents.each do |parent|
+              %li.category__parent--name                 
+                = link_to parent.name, new_item_path
+                %ul.category__child
+                  - parent.children.each do |child|
+                    %li.category__child--name                     
+                      = link_to child.name, new_item_path
+                      %ul.category__grandchild
+                        - child.children.each do |grandchild|
+                          %li.category__grandchild--name                             
+                            = link_to grandchild.name, new_item_path
+           
         %li.leftTag2
           = link_to "" do
             ブランド     
@@ -30,6 +42,7 @@
           %li.rightTag2
             = link_to new_user_registration_path do
               新規会員登録
+
 
 .main
   %section.contents
@@ -226,4 +239,8 @@
     %p.footer__copyright
       &copy; FURIMA
 
+
+        
+
 = render partial: 'layouts/exhibition'
+

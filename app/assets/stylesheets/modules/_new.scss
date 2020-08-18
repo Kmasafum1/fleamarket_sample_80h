@@ -132,6 +132,18 @@
         margin-bottom: 10px;
       }
 
+      .categorychild {
+        @include input_style();
+        margin-bottom: 10px;
+        display: none;
+      }
+
+      .categorygrandchild {
+        @include input_style();
+        margin-bottom: 10px;
+        display: none;
+      }
+
       .required_item {
         @include required_style();
       }

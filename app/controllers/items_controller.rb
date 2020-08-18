@@ -2,6 +2,9 @@ class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create, :destroy]
 
   def index
+   
+    @parents = Category.where(ancestry: nil)
+    
     @items = Item.all
     @items = Item.all.order('id DESC').limit(10)
   end

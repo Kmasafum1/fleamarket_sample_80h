@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", function(){
+document.addEventListener("load", function(){
   if (document.getElementById("button") != null) {
     Payjp.setPublicKey('pk_test_f101f21e27dffb8a6708eed3');
     let submit = document.getElementById("button");
