@@ -1,0 +1,150 @@
+%body
+  .header
+    .headerInner
+      .headerInner__main
+        .icon
+          = link_to root_path do
+            = image_tag ("logo.png")
+        .searchBox
+          = form_with(url: "", local: true, method: :get, class: "form") do |form|
+            = form.text_field :keyword, placeholder: "キーワードから探す", class: "searchBox-input"
+            = button_tag type: 'submit', class: 'search-btn' do
+              %i.fas.fa-search
+      .headerInner__nav
+        %ul.leftTag
+          %li.leftTag1
+            = link_to "" do
+              カテゴリー
+          %li.leftTag2
+            = link_to "" do
+              ブランド     
+        %ul.rightTag
+          -if user_signed_in? 
+            %li.rightTag1
+              = link_to "マイページ", users_path
+            %li.rightTag2
+              = link_to "ログアウト", destroy_user_session_path, method: :delete
+          -else     
+            %li.rightTag1
+              = link_to new_user_session_path do
+                ログイン
+            %li.rightTag2
+              = link_to new_user_registration_path do
+                新規会員登録
+  .items-show-main
+    .items-show-wrapper
+      .items-show-contents
+        .items-show-contents__topContent
+          .items-show-itemBox
+            .items-show-itemBox__name
+              -# = @items.name
+              ドラム
+            .items-show-itemBox__pic
+              = image_tag "/matthijs-smit-bRG2C0FAQEY-unsplash.jpg", width: "250px", class: "drum"
+            .items-show-itemBox__price
+              %span
+              ¥ 400,000
+              -# =@item.price.to_s(:delimited)
+              .items-show-itemBox__price__tax-shipfee
+                %span
+                  (税込)
+                %span
+                  送料込み
+              = link_to "購入画面に進む", new_user_session_path, class: "items-show-itemBox__btn"      
+            .items-show-details
+              -# = @items.name
+              ドラム  
+            .items-show-table
+              %table
+                %tbody
+                  %tr
+                    %th
+                      出品者
+                    %td
+                      フリマたろう
+                  %tr    
+                    %th
+                      カテゴリー
+                    %td
+                      音楽
+                      %br/
+                      楽器
+                  %tr  
+                    %th
+                      商品の状態
+                    %td
+                      未使用に近い
+                  %tr    
+                    %th
+                      配送料の負担
+                    %td
+                      送料込み(出品者負担)
+                  %tr    
+                    %th
+                      発送元の地域
+                    %td
+                      北海道
+                  %tr    
+                    %th
+                      発送日の目安
+                    %td
+                      2~3日で発送
+            .optionalBtn
+              = link_to "/" do
+                %i.fa.fa-flag
+                不適切な商品の通報          
+          .items-show-link
+            %ul.links
+              %li
+                = link_to "#" do
+                  %i.fa.fa-angle-left
+                  前の商品
+              %li
+                = link_to "#" do
+                  後の商品
+                  %i.fa.fa-angle-right                     
+  .footer
+    %ul.footerContents
+      %li.content
+        %h2.content__top FURIMAについて
+        %ul
+          %li
+            = link_to "#" do
+              会社概要(運営会社)
+          %li
+            = link_to "#" do
+              プライバシーポリシー
+          %li
+            = link_to "#" do
+              FURIMA利用規約
+          %li
+            = link_to "#" do
+              ポイントに関する特約
+      %li.content
+        %h2.content__top FURIMAを見る
+        %ul
+          %li
+            = link_to "#" do
+              カテゴリー一覧
+          %li
+            = link_to "#" do
+              ブランド一覧
+      %li.content
+        %h2.content__top ヘルプ&ガイド
+        %ul
+          %li
+            = link_to "#" do
+              FURIMAガイド
+          %li
+            = link_to "#" do
+              FURIMAロゴ利用ガイドライン
+          %li
+            = link_to "#"do
+              お知らせ
+    %div.footer__logo
+      = link_to "#" do
+        = image_tag ("logo-white.png")
+      %p.footer__copyright
+        &copy; FURIMA
+
+  = render partial: 'layouts/exhibition'  

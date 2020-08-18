@@ -6,5 +6,6 @@ class User < ApplicationRecord
   validates :nickname, presence: true
   devise :validatable, password_length: 7..128
   has_one :address
+  has_one :card, dependent: :destroy
   has_many :items
 end

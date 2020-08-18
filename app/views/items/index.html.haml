@@ -34,7 +34,7 @@
 .main
   %section.contents
     .contents__visual
-      %h2.contents__visual__subtitle
+      .contents__visual__subtitle
         人生を変えるフリマアプリ
       %p.contents__visual__text
         FURIMAはだれでもかんたんに出品・購入できる
@@ -81,7 +81,7 @@
 
   %section.middleDl
     .middleDl__inner
-      %h2.middleDl__inner__subtitle
+      .middleDl__inner__subtitle
         会員数日本一位
       %p.middleDl__inner__text
         FURIMAは、フリマアプリで最も人気。
@@ -132,55 +132,12 @@
       .productLists
         - @items.each do |item| 
           = link_to item_path(item.id) do
-            .productList
-              .productList--image
-                /= image_tag item.item_images[0].image, size: '220x150'
-                = image_tag item.item_images.first.image.url
-              .productList--body
-                .name
-                  - n = item.name
-                  = "商品名：#{n}"
-                .deteails 
-                  - p = item.price
-                  = "価格：#{p}円"
           .productList
             .productList--image
-              /= image_tag item.item_images[1].image, size: '220x150'
-            .productList--body
-              .name
-                - n = item.name
-                = "商品名：#{n}"
-              .deteails 
-                - p = item.price
-                = "価格：#{p}円"
-          .productList
-            .productList--image
-              /= image_tag item.item_images[2].image, size: '220x150'    
-            .productList--body
-              .name
-                - n = item.name
-                = "商品名：#{n}"
-              .deteails 
-                - p = item.price
-                = "価格：#{p}円"
-            -#コメント
-              購入実装時に各productListに追加   
-            .items-box_photo__sold   
-              .items-box_photo__sold__inner
-                SOLD    
-          .productList
-            .productList--image
-              /= image_tag item.item_images[3].image, size: '220x150'
-            .productList--body
-              .name
-                - n = item.name
-                = "商品名：#{n}"
-              .deteails 
-                - p = item.price
-                = "価格：#{p}円"
-          .productList
-            .productList--image
-              /= image_tag item.item_images[4].image, size: '220x150'
+              = image_tag "#{item.item_images[0].image}", size: '220x150'
+              - if item.buyer_id.present?
+                .items-box_photo__sold   
+                  .items-box_photo__sold__inner SOLD
             .productList--body
               .name
                 - n = item.name
@@ -197,11 +154,14 @@
         %h3.title
           = link_to "#" do
             アーカイバ
-      .productLists
+      %ul.productLists
         - @items.each do |item| 
-          .productList
+          %li.productList
             .productList--image
-              /= image_tag item.item_images[0].image, size: '220x150'
+              = image_tag item.item_images[0].image, size: '220x150'
+              - if item.buyer_id.present?
+                .items-box_photo__sold   
+                  .items-box_photo__sold__inner SOLD
             .productList--body
               .name
                 - n = item.name
@@ -209,51 +169,10 @@
               .deteails 
                 - p = item.price
                 = "価格：#{p}円"
-          .productList
-            .productList--image
-              /= image_tag item.item_images[1].image, size: '220x150'
-            .productList--body
-              .name
-                - n = item.name
-                = "商品名：#{n}"
-              .deteails 
-                - p = item.price
-                = "価格：#{p}円"
-          .productList
-            .productList--image
-              /= image_tag item.item_images[2].image, size: '220x150'
-            .productList--body
-              .name
-                - n = item.name
-                = "商品名：#{n}"
-              .deteails 
-                - p = item.price
-                = "価格：#{p}円"
-          .productList
-            .productList--image
-              /= image_tag item.item_images[3].image, size: '220x150'
-            .productList--body
-              .name
-                - n = item.name
-                = "商品名：#{n}"
-              .deteails 
-                - p = item.price
-                = "価格：#{p}円"
-          .productList
-            .productList--image
-              /= image_tag item.item_images[4].image, size: '220x150'
-            .productList--body
-              .name
-                - n = item.name
-                = "商品名：#{n}"
-              .deteails 
-                - p = item.price
-                = "価格：#{p}円"
-
-
+                
 .banner
   .inner
-    %h2.inner__title
+    .inner__title
       だれでもかんたん、人生を変えるフリマアプリ
     %p.inner__text
       今すぐ無料ダウンロード！

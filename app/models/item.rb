@@ -3,7 +3,12 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :item_images, allow_destroy: true
   belongs_to :category
   belongs_to :brand, optional: true
-  belongs_to :user
+  # optional: tureは最終的に外す。今はこれがないとテーブルに保存できないので
+  belongs_to :category, optional: true
+  # optional: tureは最終的に外す。今はこれがないとテーブルに保存できないので
+  belongs_to :brand, optional: true
+  belongs_to :seller, class_name: "User"
+  belongs_to :buyer, class_name: "User"
 
   validates_presence_of :item_images
 
