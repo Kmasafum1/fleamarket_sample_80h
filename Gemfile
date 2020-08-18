@@ -65,12 +65,11 @@ gem "haml-rails", ">= 1.0", '<= 2.0.1'
 gem 'font-awesome-sass'
 gem 'devise'
 gem 'carrierwave'
-gem 'ancestry'
-gem 'payjp'
 gem 'dotenv-rails'
+gem 'mini_magick'
 gem 'jquery-rails'
 gem 'ancestry'
-
+gem 'payjp'
 
 group :production do
   gem 'unicorn'
