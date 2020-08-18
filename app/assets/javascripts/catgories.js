@@ -2,7 +2,6 @@ $(function(){
   $('.leftTag1').hover(function() {
     console.log(this);
     $(".category__parent--name").show();
-    
     $(".category__child").hide();
     $(".category__grandchild").hide();
   }, function() { 

@@ -1,5 +1,4 @@
 $(function(){
- 
   $('.category').on('change',(function() {
     $(".categorychild").show();
     let value = $('.category').val();
