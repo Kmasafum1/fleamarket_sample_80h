@@ -132,19 +132,19 @@
       .productLists
         - @items.each do |item| 
           = link_to item_path(item.id) do
-          .productList
-            .productList--image
-              = image_tag "#{item.item_images[0].image}", size: '220x150'
-              - if item.buyer_id.present?
-                .items-box_photo__sold   
-                  .items-box_photo__sold__inner SOLD
-            .productList--body
-              .name
-                - n = item.name
-                = "商品名：#{n}"
-              .deteails 
-                - p = item.price
-                = "価格：#{p}円"
+            .productList
+              .productList--image
+                = image_tag "#{item.item_images[0].image}", size: '220x150'
+                - if item.buyer_id.present?
+                  .items-box_photo__sold   
+                    .items-box_photo__sold__inner SOLD
+              .productList--body
+                .name
+                  - n = item.name
+                  = "商品名：#{n}"
+                .deteails 
+                  - p = item.price
+                  = "価格：#{p}円"
 
   %section.pickupContainer#last
     %h2.head
