@@ -69,6 +69,8 @@ gem 'ancestry'
 gem 'payjp'
 gem 'dotenv-rails'
 gem 'jquery-rails'
+gem 'ancestry'
+
 
 group :production do
   gem 'unicorn'

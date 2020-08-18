@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_092254) do
   end
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -58,19 +58,21 @@ ActiveRecord::Schema.define(version: 2020_08_10_092254) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
-    t.text "condition", null: false
+    t.integer "condition", null: false
     t.integer "delivery_cost", null: false
-    t.string "sipping_area", null: false
-    t.string "sipping_days", null: false
+    t.integer "sipping_area", null: false
+    t.integer "sipping_days", null: false
     t.integer "price", null: false
     t.bigint "category_id", null: false
     t.bigint "brand_id", null: false
-    t.bigint "user_id"
+    t.bigint "seller_id"
+    t.bigint "buyer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["category_id"], name: "index_items_on_category_id"
-    t.index ["user_id"], name: "index_items_on_user_id"
+    t.index ["buyer_id"], name: "index_items_on_buyer_id"
+    t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -96,5 +98,6 @@ ActiveRecord::Schema.define(version: 2020_08_10_092254) do
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
-  add_foreign_key "items", "users"
+  add_foreign_key "items", "users", column: "buyer_id"
+  add_foreign_key "items", "users", column: "seller_id"
 end

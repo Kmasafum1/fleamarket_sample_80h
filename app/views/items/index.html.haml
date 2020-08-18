@@ -47,7 +47,7 @@
 .main
   %section.contents
     .contents__visual
-      %h2.contents__visual__subtitle
+      .contents__visual__subtitle
         人生を変えるフリマアプリ
       %p.contents__visual__text
         FURIMAはだれでもかんたんに出品・購入できる
@@ -94,7 +94,7 @@
 
   %section.middleDl
     .middleDl__inner
-      %h2.middleDl__inner__subtitle
+      .middleDl__inner__subtitle
         会員数日本一位
       %p.middleDl__inner__text
         FURIMAは、フリマアプリで最も人気。
@@ -144,19 +144,20 @@
             新規投稿商品
       .productLists
         - @items.each do |item| 
-          .productList
-            .productList--image
-              = image_tag "#{item.item_images[0].image}", size: '220x150'
-              - if item.buyer_id.present?
-                .items-box_photo__sold   
-                  .items-box_photo__sold__inner SOLD
-            .productList--body
-              .name
-                - n = item.name
-                = "商品名：#{n}"
-              .deteails 
-                - p = item.price
-                = "価格：#{p}円"
+          = link_to item_path(item.id) do
+            .productList
+              .productList--image
+                = image_tag "#{item.item_images[0].image}", size: '220x150'
+                - if item.buyer_id.present?
+                  .items-box_photo__sold   
+                    .items-box_photo__sold__inner SOLD
+              .productList--body
+                .name
+                  - n = item.name
+                  = "商品名：#{n}"
+                .deteails 
+                  - p = item.price
+                  = "価格：#{p}円"
 
   %section.pickupContainer#last
     %h2.head
@@ -184,7 +185,7 @@
                 
 .banner
   .inner
-    %h2.inner__title
+    .inner__title
       だれでもかんたん、人生を変えるフリマアプリ
     %p.inner__text
       今すぐ無料ダウンロード！
