@@ -6,7 +6,7 @@
           = image_tag ("logo.png"), class: "aBtn"
   .contents
     .content
-      = form_with url:"", method: :post do |f|
+      = form_with url:pay_item_buyers_path(params[:item_id]), method: :post do |f|
         .content__top
           %h2 
             購入内容の確認
@@ -17,7 +17,8 @@
           .statement
             .amount
               %p.text 支払い金額
-              %p.integer ¥398
+              %p.integer
+                = "¥#{@item.price}"
             .point
               %p.text ポイントの使用
               %p.integer 所持ポイント :P0
@@ -40,7 +41,11 @@
         .content_btn
           %p.text 支払い方法を入力を完了してください。
           %p.btn
-            = f.submit '購入する', class: 'buy_btn'
+          - if @item.buyer_id.blank?
+            = f.submit '購入する', class: 'buy_btn', id: 'buy', data: { confirm: '購入しますか？' }
+          - else
+            %p#soldout.soldout_btn 売り切れました
+
   .footer
     .footer__top
       .footer__text プライバシーポリシー

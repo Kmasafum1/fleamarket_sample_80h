@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
-    @items = Item.includes(:item_images).order('created_at DESC')
+    @items = Item.all.order('id DESC').limit(10)
   end
 
   def new
@@ -36,6 +36,9 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
+  end
+  
+  def show
   end
 
   def destroy
