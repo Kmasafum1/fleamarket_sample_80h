@@ -12,21 +12,23 @@
     .headerInner__nav
       %ul.leftTag
         %li.leftTag1
-          = link_to "カテゴリー", categories_path
+          = link_to "カテゴリー",  categories_path
           .category-box
             %ul.category__parent
               - @parents.each do |parent|
                 %li.category__parent--name
-                  = parent.name
+                  -# = parent.name
+                  = link_to parent.name, new_item_path
                   %ul.category__child
                     - parent.children.each do |child|
                       %li.category__child--name
-                        = child.name 
+                        -# = child.name 
+                        = link_to child.name, new_item_path
                         %ul.category__grandchild
                           - child.children.each do |grandchild|
                             %li.category__grandchild--name
-                              = grandchild.name
-          
+                              -# = grandchild.name
+                              = link_to grandchild.name, new_item_path
            
         %li.leftTag2
           = link_to "" do
