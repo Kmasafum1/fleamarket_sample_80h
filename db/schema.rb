@@ -64,14 +64,14 @@ ActiveRecord::Schema.define(version: 2020_08_10_092254) do
     t.integer "sipping_days", null: false
     t.integer "price", null: false
     t.bigint "category_id", null: false
-    t.bigint "brand_id", null: false
+    t.bigint "brand_id"
     t.bigint "seller_id"
     t.bigint "buyer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["brand_id"], name: "index_items_on_brand_id"
-    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["buyer_id"], name: "index_items_on_buyer_id"
+    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
