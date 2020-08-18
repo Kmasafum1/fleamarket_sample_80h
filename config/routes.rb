@@ -15,10 +15,6 @@ Rails.application.routes.draw do
       get 'category_children', defaults: { format: 'json' }
       get 'category_grandchildren', defaults: { format: 'json' }
     end
-    # member do
-    #   get 'category_children', defaults: { format: 'json' }
-    #   get 'category_grandchildren', defaults: { format: 'json' }
-    # end
   end  
 
   devise_for :users, controllers: {
