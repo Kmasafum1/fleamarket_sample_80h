@@ -1,0 +1,76 @@
+.header
+  .header__logo
+    = link_to root_path do
+      =image_tag("logo.png", size: "220x70")
+    
+.title
+  .title__contents
+    .title__contents__text
+      クレジットカード入力画面
+  
+.main-form
+  .main-form__frame
+    = form_tag(pay_cards_path, method: :post, id: 'charge-form',  name: "inputForm") do
+      .form-group
+        %label カード番号
+        %span.form-group__require 必須
+        %br
+        = text_field_tag "number", "", class: "form-group__input", placeholder: "半角数字のみ" ,maxlength: "16", type: "text", id: "payment_card_number"
+        %ul.card-list
+          %li.icon-visa
+            = image_tag asset_path("card/visa.png"), size: "40x30", alt:"visa", class: "a"
+          %li.icon-master
+            = image_tag asset_path("card/master.png"), size: "40x30", alt:"master", class: "b"
+          %li.icon-discover
+            = image_tag asset_path("card/discover.png"), size: "40x30", alt:"discover", class: "c"
+          %li.icon-jcb
+            = image_tag asset_path("card/jcb.png"), size: "40x30", alt:"JVB", class: "d"
+          %li.icon-amex
+          = image_tag asset_path("card/amex.png"), size: "40x30", alt:"AMEX", class: "e"
+          %li.icon-diners
+          = image_tag asset_path("card/diners.png"), size: "40x30", alt:"diners", class: "f"
+      .form-group
+        %label 有効期限
+        %span.form-group__require 必須
+        %br
+        %select{name: "exp_month", type: "text", class: 'form-group__input__one', id: "payment_card_month"}
+          %option{value: ""} --
+          %option{value: "1"}01
+          %option{value: "2"}02
+          %option{value: "3"}03
+          %option{value: "4"}04
+          %option{value: "5"}05
+          %option{value: "6"}06
+          %option{value: "7"}07
+          %option{value: "8"}08
+          %option{value: "9"}09
+          %option{value: "10"}10
+          %option{value: "11"}11
+          %option{value: "12"}12
+        %label 月
+        %select{name: "exp_year", type: "text", class: 'form-group__input__one', id: "payment_card_year"}
+          %option{value: ""} --
+          %option{value: "2020"}20
+          %option{value: "2021"}21
+          %option{value: "2022"}22
+          %option{value: "2023"}23
+          %option{value: "2024"}24
+          %option{value: "2025"}25
+          %option{value: "2026"}26
+          %option{value: "2027"}27
+          %option{value: "2028"}28
+          %option{value: "2029"}29
+        %label 年
+      .form-group
+        %label セキュリティコード
+        %span.form-group__require 必須
+        %br
+        = text_field_tag "cvc", "", type: 'text', class: "form-group__input", id: "payment_card_cvc", placeholder: "カード背面3~4桁の番号", maxlength: "4"
+
+      .form-group__add
+        .form-group__add__question
+        %p.form-group__text--right--blue
+          カードの裏面の番号とは？
+      .form-group
+        #card_token
+        = submit_tag "登録する", id: "button", class: "btn--red"

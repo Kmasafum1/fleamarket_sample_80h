@@ -29,15 +29,22 @@ Rails.application.routes.draw do
     post 'addresses', to: 'users/registrations#create_address'
   end
 
-
   resource :users, only: [:show, :edit, :update] do
     collection do
       get 'logout'
     end
   end
-    
-
-  resources :buyers, only: [:index]
-
+  resources :items, only: [:index, :new, :show] do
+    resources :buyers, only: [:index] do
+      collection do
+        post 'pay', to: 'buyers#pay'
+      end
+    end  
+  end
   
+  resources :cards, only: [:new, :show, :destroy] do
+    collection do
+      post 'pay', to: 'cards#pay'
+    end
+  end
 end

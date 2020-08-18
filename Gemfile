@@ -66,6 +66,8 @@ gem 'font-awesome-sass'
 gem 'devise'
 gem 'carrierwave'
 gem 'ancestry'
+gem 'payjp'
+gem 'dotenv-rails'
 gem 'jquery-rails'
 
 group :production do
