@@ -131,9 +131,21 @@
             新規投稿商品
       .productLists
         - @items.each do |item| 
+          = link_to item_path(item.id) do
+            .productList
+              .productList--image
+                /= image_tag item.item_images[0].image, size: '220x150'
+                = image_tag item.item_images.first.image.url
+              .productList--body
+                .name
+                  - n = item.name
+                  = "商品名：#{n}"
+                .deteails 
+                  - p = item.price
+                  = "価格：#{p}円"
           .productList
             .productList--image
-              = image_tag item.item_images[0].image, size: '220x150'
+              /= image_tag item.item_images[1].image, size: '220x150'
             .productList--body
               .name
                 - n = item.name
@@ -143,17 +155,7 @@
                 = "価格：#{p}円"
           .productList
             .productList--image
-              = image_tag item.item_images[1].image, size: '220x150'
-            .productList--body
-              .name
-                - n = item.name
-                = "商品名：#{n}"
-              .deteails 
-                - p = item.price
-                = "価格：#{p}円"
-          .productList
-            .productList--image
-              = image_tag item.item_images[2].image, size: '220x150'    
+              /= image_tag item.item_images[2].image, size: '220x150'    
             .productList--body
               .name
                 - n = item.name
@@ -168,7 +170,7 @@
                 SOLD    
           .productList
             .productList--image
-              = image_tag item.item_images[3].image, size: '220x150'
+              /= image_tag item.item_images[3].image, size: '220x150'
             .productList--body
               .name
                 - n = item.name
@@ -178,7 +180,7 @@
                 = "価格：#{p}円"
           .productList
             .productList--image
-              = image_tag item.item_images[4].image, size: '220x150'
+              /= image_tag item.item_images[4].image, size: '220x150'
             .productList--body
               .name
                 - n = item.name
@@ -199,7 +201,7 @@
         - @items.each do |item| 
           .productList
             .productList--image
-              = image_tag item.item_images[0].image, size: '220x150'
+              /= image_tag item.item_images[0].image, size: '220x150'
             .productList--body
               .name
                 - n = item.name
@@ -209,7 +211,7 @@
                 = "価格：#{p}円"
           .productList
             .productList--image
-              = image_tag item.item_images[1].image, size: '220x150'
+              /= image_tag item.item_images[1].image, size: '220x150'
             .productList--body
               .name
                 - n = item.name
@@ -219,7 +221,7 @@
                 = "価格：#{p}円"
           .productList
             .productList--image
-              = image_tag item.item_images[2].image, size: '220x150'
+              /= image_tag item.item_images[2].image, size: '220x150'
             .productList--body
               .name
                 - n = item.name
@@ -229,7 +231,7 @@
                 = "価格：#{p}円"
           .productList
             .productList--image
-              = image_tag item.item_images[3].image, size: '220x150'
+              /= image_tag item.item_images[3].image, size: '220x150'
             .productList--body
               .name
                 - n = item.name
@@ -239,7 +241,7 @@
                 = "価格：#{p}円"
           .productList
             .productList--image
-              = image_tag item.item_images[4].image, size: '220x150'
+              /= image_tag item.item_images[4].image, size: '220x150'
             .productList--body
               .name
                 - n = item.name

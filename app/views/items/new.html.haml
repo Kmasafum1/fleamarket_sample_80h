@@ -3,69 +3,67 @@
     .icon
       = link_to root_path do
         = image_tag ("logo.png")
-  .exhibition_main
+  = form_with model: @item, class: "exhibition_main", id: "item-form" do |f|
+    = render 'layouts/error_messages', model: f.object
     .image
       .required_item
         出品画像
         %span.necessary 必須
       .image_explanation
         最大5枚までアップロード
-      .image_photo
-        .image_upload
-          %input{class: "image_upload__file", type: "file"}
-        .image_upload
-          %input{class: "image_upload__file", type: "file"}
-        .image_upload
-          %input{class: "image_upload__file", type: "file"}
-        .image_upload
-          %input{class: "image_upload__file", type: "file"}
-        .image_upload
-          %input{class: "image_upload__file", type: "file"}
+      .items_new-image
+        .items_new-image-box
+          .items_new-content
+          .items_new-uploader-box
+            %label.items_new-uploader__label
+              = f.fields_for :product_images do |image|
+                .items_new-js-file_group{"data-index" => "#{@item.item_images.index}"}
+                  = image.file_field :image, class: 'items_new-js-file', style: "display:none"
     .item
       .required_item
         商品名
         %span.necessary 必須
-      %input.item_name
+      = f.text_field :name, class: "item_name"
       .required_item
         商品の説明
         %span.necessary 必須
-      %textarea.item_explanation
+      = f.text_area :description, class: "item_explanation"
     .categories
       .required_item
         カテゴリー
         %span.necessary 必須
-      %select.category
+      /= f.collection_select :category_id, @category, :id, :name, {prompt: "選択してください"}, {class: "category"}
       .required_item
         ブランド
         %span.necessary_brand 任意
-      %input.brand_name
+      = f.text_field :brand_id, class: "brand_name"
       .required_item
         状態
         %span.necessary 必須
-      %select.condition
+      = f.select :condition, [["新品、未使用", 1],["未使用に近い", 2],["目立った傷汚れなし", 3],["やや傷や汚れあり", 4],["傷や汚れあり", 5],["全体的に状態が悪い", 6]], {prompt: "選択してください"}, {class: :condition}
     .delivery
       .required_item
         配送料の負担
         %span.necessary 必須
-      %select.cost
+      = f.select :delivery_cost, [["送料込み(出品者負担)", 1],["着払い(購入者負担)", 2]], {prompt: "選択してください"}, {class: :cost}
       .required_item
         発送元の地域
         %span.necessary 必須
-      %select.area
+      = f.select :sipping_area, Item.sipping_areas.keys, {prompt: "選択してください"}, {class: :area}
       .required_item
         発送までの日数
         %span.necessary 必須
-      %select.days
+      = f.select :sipping_days, [["1〜2日で発送", 1],["2〜3日で発送", 2],["4〜7日で発送", 3]], {prompt: "選択してください"}, {class: :days}
     .price
       .required_item
         価格
         %span.necessary 必須
       .saleprice
         %span ¥
-        %input{class: "input_price", type: "number", placeholder: "0"}
+        =f.number_field :price, class:"input_price"
     .exhibition
       .exhibition_content
-        %button{class: "execution", type: "submit"}出品する
+        = f.submit "出品する", class: "execution"
         %button{class: "return", type: "submit", url: "/"}もどる
       .precautions 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
   .exhibition_footer

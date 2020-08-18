@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "items#index"
 
-  resources :exhibition, only: :new
+  resources :items, only: [:new, :create, :edit, :update, :destroy]
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -12,5 +12,4 @@ Rails.application.routes.draw do
   end
   resources :buyers, only: [:index]
   resource :users, only: [:show, :edit, :update]
-  resources :items, only: [:index]
 end
