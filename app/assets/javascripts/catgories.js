@@ -1,5 +1,7 @@
 $(function(){
+  $(".category__parent").hide();
   $('.leftTag1').hover(function() {
+    $(".category__parent").show();
     $(".category__parent--name").show();
     $(".category__child").hide();
     $(".category__grandchild").hide();
