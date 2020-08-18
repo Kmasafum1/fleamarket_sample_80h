@@ -131,6 +131,7 @@
             新規投稿商品
       .productLists
         - @items.each do |item| 
+          = link_to item_path(item.id) do
           .productList
             .productList--image
               = image_tag "#{item.item_images[0].image}", size: '220x150'

@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_092254) do
   end
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_092254) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
-    t.string "ancestry", null: false
+    t.string "ancestry"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -58,10 +58,10 @@ ActiveRecord::Schema.define(version: 2020_08_10_092254) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
-    t.text "condition", null: false
+    t.integer "condition", null: false
     t.integer "delivery_cost", null: false
-    t.string "sipping_area", null: false
-    t.string "sipping_days", null: false
+    t.integer "sipping_area", null: false
+    t.integer "sipping_days", null: false
     t.integer "price", null: false
     t.bigint "category_id", null: false
     t.bigint "brand_id", null: false
@@ -70,8 +70,8 @@ ActiveRecord::Schema.define(version: 2020_08_10_092254) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["brand_id"], name: "index_items_on_brand_id"
-    t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["category_id"], name: "index_items_on_category_id"
+    t.index ["buyer_id"], name: "index_items_on_buyer_id"
     t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 

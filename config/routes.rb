@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   root "items#index"
 
-
-  resources :exhibition, only: :new
-
+  resources :items, only: [:new, :create, :edit, :update, :destroy]
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
