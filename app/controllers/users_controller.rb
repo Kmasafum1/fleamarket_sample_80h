@@ -2,9 +2,21 @@ class UsersController < ApplicationController
   def show
   end
   def edit
+    @user = current_user
   end
   def update
+    @user = current_user
+    if @user.update(user_params)
+      redirect_to user_path, notice: 'ユーザー情報を更新しました'
+    else
+      render :edit
+    end
   end 
   def logout
-  end  
+  end
+  private
+  def user_params
+    params.require(:user).permit(:name, :email)
+    # ユーザーテーブル(ログインユーザーの)にある名前とemailを編集を許可する
+  end   
 end

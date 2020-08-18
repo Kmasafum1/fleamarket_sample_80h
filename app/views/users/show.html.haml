@@ -23,7 +23,7 @@
       マイページ一覧
       %div.user-show__leftbar__contents
         %div.user-show__leftbar__contents__title
-          = link_to "#" do
+          = link_to new_item_path do
             出品する
       %div.user-show__leftbar__contents
         %div.user-show__leftbar__contents__title
@@ -41,8 +41,12 @@
         %h1 設定
         %div.user-show__leftbar__settings__bar
           %div.user-show__leftbar__settings__title
-            = link_to "#" do
+            = link_to new_card_path do
               支払い方法
+        %div.user-show__leftbar__settings__bar
+          %div.user-show__leftbar__settings__title
+            = link_to edit_users_path do
+              ユーザー編集      
         %div.user-show__leftbar__settings__bar
           %div.user-show__leftbar__settings__title
             = link_to "/users/logout" do
@@ -93,20 +97,16 @@
       
 
 
-%ul.setting-lists
+-# %ul.setting-lists
 
-  %li.list-setting
-    .list-setting__info
-      = link_to new_card_path do
-        .card-branch
-          %span クレジットカード登録
-          = icon('fas','angle-right') 
-      = link_to card_path(current_user.id) do
-        .card-branch
-          %span クレジットカード詳細・削除
-          = icon('fas','angle-right')
-  %li.list-setting
-    .list-setting__info
-      =link_to "#" do
-        ログアウト
-    = icon('fas','angle-right')
+-#   %li.list-setting
+-#     .list-setting__info
+-#       = link_to new_card_path do
+-#         .card-branch
+-#           %span クレジットカード登録
+-#           = icon('fas','angle-right') 
+-#       = link_to card_path(current_user.id) do
+-#         .card-branch
+-#           %span クレジットカード詳細・削除
+-#           = icon('fas','angle-right')
+
