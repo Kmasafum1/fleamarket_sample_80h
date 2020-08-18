@@ -5,11 +5,11 @@ ul.category__parent {
   background-color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
   position: relative;
-  left:0px;
+  left:-50px;
   width: 200px;
   z-index: 1;
+  display: none;
   &--name {    
-    display: none;
     list-style: none;
     text-align: center;
     cursor: pointer;
@@ -24,7 +24,6 @@ ul.category__parent {
     width: 224px;
     z-index: 2;
     &--name {
-      display: none;
       cursor: pointer;
       text-align: center
     }
