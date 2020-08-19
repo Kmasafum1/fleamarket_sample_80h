@@ -12,7 +12,6 @@ $(function(){
       $('.categorychild').empty();
       children.forEach(function(child) {
         $('.categorychild').append(`<option value="${child.id}"> ${child.name} </option>`)
-        
       })
     });
   }))
