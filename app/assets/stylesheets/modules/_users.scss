@@ -2,8 +2,6 @@
   box-sizing: border-box;
 }
 .container{
-  padding: 0 0 220px;
-  min-height: 100%;
   background: #f5f5f5;
 }
 .single-header{
@@ -15,7 +13,6 @@
   &__logo{
     text-align: center;
     margin: auto;
-    margin: 40px 0 0;
   }
 }
 .single-header__progress ol{
@@ -146,10 +143,17 @@ h2{
   margin: 0 auto;
   text-align: center;
 }
-.field label{
+.field {
+  &__require{
+    padding: 2px;
+    background-color: #3ccace;
+    color: white;
+  }
+  label{
   font-weight: 600;
   font-size: inherit;
-}
+  }
+}  
 .clearfix{
   display: block;
   display: flex;

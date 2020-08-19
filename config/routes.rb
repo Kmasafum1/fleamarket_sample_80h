@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root "items#index"
-
-
-  resources :exhibition, only: :new
-
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  
+  
+  resources :categories, only: [:index]
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -18,7 +18,12 @@ Rails.application.routes.draw do
       get 'logout'
     end
   end
-  resources :items, only: [:index, :new, :show] do
+
+  resources :items do
+    collection do
+      get 'category_children', defaults: { format: 'json' }
+      get 'category_grandchildren', defaults: { format: 'json' }
+    end
     resources :buyers, only: [:index] do
       collection do
         post 'pay', to: 'buyers#pay'

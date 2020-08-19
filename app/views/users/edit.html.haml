@@ -1,0 +1,23 @@
+- if @user.errors.any?
+  .alert.alert-danger{:role => "alert"}
+    %h4.alert-heading= pluralize(@user.errors.count, "error")
+    %p
+      = pluralize(@user.errors.count, "error")
+      prohibited this object from being saved: not successfully
+    %hr/
+    %p.mb-0
+      - @user.errors.full_messages.each do |message|
+        %li= message
+.container
+  .row
+    .col-6
+      %h2 編集
+      = form_for @user do |f|
+        .form-group
+          %label ユーザー名
+          = f.text_field :name, class: "form-control"
+        .form-group
+          %label メールアドレス
+          = f.text_field :email, class: "form-control"
+        %div
+          = f.submit class: "btn-success"

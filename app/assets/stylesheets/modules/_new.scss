@@ -67,24 +67,30 @@
         margin-bottom: 10px;
       }
 
-      .image_photo {
-        height: 150px;
+      .items_new-image-box{
         display: flex;
-        border-top: dashed 1px black;
-        border-bottom: dashed 1px black;
-        border-left: dashed 1px black;
-
-        .image_upload {
-          width: 124px;
-          border-right: dashed 1px black;
-          position: relative;
-
-          &__file {
-            width: 100%;
-            font-size: 10px;
-            position: absolute;
-          }
-        }
+        min-height: 150px;
+        width: 100%;
+      }
+      
+      .items_new-content{
+        display: flex;
+        height: 150px;
+        max-width: 100%;
+      }
+      
+      .items_new-uploader-box{
+        height: 150px;
+        width: 100%;
+        background-color: #f8f8f8;
+        border: dashed 1px #d3d3d3;
+      }
+      
+      .items_new-uploader__label{
+        display:block;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
       }
     }
 
@@ -124,6 +130,18 @@
       .category {
         @include input_style();
         margin-bottom: 10px;
+      }
+
+      .categorychild {
+        @include input_style();
+        margin-bottom: 10px;
+        display: none;
+      }
+
+      .categorygrandchild {
+        @include input_style();
+        margin-bottom: 10px;
+        display: none;
       }
 
       .required_item {
