@@ -4,7 +4,7 @@ $(function(){
     let value = $('.category').val();
     $.ajax({      
       type: "GET",
-      url: '/exhibition/category_children',
+      url: '/items/category_children',
       data: { id: value },
       dataType: 'json'
     })
@@ -12,7 +12,6 @@ $(function(){
       $('.categorychild').empty();
       children.forEach(function(child) {
         $('.categorychild').append(`<option value="${child.id}"> ${child.name} </option>`)
-        
       })
     });
   }))
@@ -23,7 +22,7 @@ $(function(){
     let value = $('.categorychild').val();
     $.ajax({      
       type: "GET",
-      url: '/exhibition/category_grandchildren',
+      url: '/items/category_grandchildren',
       data: { id: value },
       dataType: 'json'
     })

@@ -1,10 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create, :destroy]
+  before_action :set_item, except: [:index, :new, :create, :destroy, :category_children, :category_grandchildren]
 
   def index
-   
     @parents = Category.where(ancestry: nil)
-    
     @items = Item.all
     @items = Item.all.order('id DESC').limit(10)
   end
@@ -13,11 +11,19 @@ class ItemsController < ApplicationController
     if user_signed_in?
       @item = Item.new
       @item.item_images.new
-      @category = Category.where(ancestry: nil).each do |parent|
-      end
+      @category = Category.where(ancestry: nil)
     else
       redirect_to root_path
     end
+  end
+  
+  def category_children
+    
+    @category_chid = Category.find(params[:id]).children
+  end
+
+  def category_grandchildren
+    @category_grandchild = Category.find(params[:id]).children
   end
 
   def create

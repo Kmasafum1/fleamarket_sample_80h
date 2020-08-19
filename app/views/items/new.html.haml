@@ -16,7 +16,7 @@
           .items_new-content
           .items_new-uploader-box
             %label.items_new-uploader__label
-              = f.fields_for :product_images do |image|
+              = f.fields_for :item_images do |image|
                 .items_new-js-file_group{"data-index" => "#{@item.item_images.index}"}
                   = image.file_field :image, class: 'items_new-js-file', style: "display:none"
     .item
