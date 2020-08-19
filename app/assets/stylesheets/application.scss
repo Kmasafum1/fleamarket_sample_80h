@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  */
-
 @import "reset";
 @import "font-awesome-sprockets";
 @import "font-awesome";
@@ -24,6 +23,7 @@
 @import "exhibition";
 @import "modules/product";
 @import "modules/exhibition";
+@import "modules/flash";
 
 
 

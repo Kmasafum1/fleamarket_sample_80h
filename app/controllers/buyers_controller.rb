@@ -41,8 +41,12 @@ class BuyersController < ApplicationController
       customer: Payjp::Customer.retrieve(@card.customer_id),
       currency: 'jpy'
     )
-    @item.update( buyer_id: current_user.id)
-    redirect_to root_path
+    if @item.update( buyer_id: current_user.id)
+      redirect_to root_path, notice: '商品を購入しました。'
+    else
+      flash.now[:alert] = '購入できませんでした。'
+      render :index
+    end
   end
 
   private
