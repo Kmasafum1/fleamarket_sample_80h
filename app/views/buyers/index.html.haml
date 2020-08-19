@@ -12,34 +12,49 @@
             購入内容の確認
         .content__img
           .tagimg
+            = image_tag "#{@item.item_images[0].image}", size: '200x150', class: 'buy-image'
           .textimg
-        .content__statement
-          .statement
+            .textimg_name
+              %div 商品名:
+              = @item.name
+            .textimg_cost
+              %div 送料:
+              = @item.delivery_cost
             .amount
-              %p.text 支払い金額
-              %p.integer
+              %div 支払い金額:
+              .integer
                 = "¥#{@item.price}"
-            .point
-              %p.text ポイントの使用
-              %p.integer 所持ポイント :P0
-            .balance
-              %p.text フリペイ残高の使用
-              %p.integer 残高 ¥80
-            .comment
-              %p.text 同時に選択した場合、メルカリポイント→メルペイ残高の順でお支払いに適用されます
         .content__payment
-          %p.text 支払い方法
-          %p.comment 登録してください
-        .content__address
-          .shipping__text
-            %p.name 配送先
-            %p.text 変更する
+          .payment_title
+            支払い方法
+            .inner_card
+              .inner_card__brand
+                %figure
+                  = image_tag asset_path("card/#{@card_image}"), width: "60", height: "50", alt: @card_brand, id: "card_image"
+              .inner_card__number
+                = "**** **** **** " + @card_info.last4
+              .inner_card__deadline
+                .inner_card__deadline_title
+                  有効期限
+                .inner_card__deadline_date
+                  = @exp_month + " / " + @exp_year
           .shipping__address
-            %p.integer 〒150-0041
-            %p.name 東京都渋谷区神南1-18-2
-            %p.number フレーム神南4F
+            .address_info
+              配送先
+            .user_address
+              = @address.postal_code
+              %br
+              = @address.prefecture
+              = @address.city
+              = @address.address
+              = @address.building_name
+              .user_name
+                %br
+                氏名:
+                = @user.last_name
+                = "#{@user.first_name}様"
+                
         .content_btn
-          %p.text 支払い方法を入力を完了してください。
           %p.btn
           - if @item.buyer_id.blank?
             = f.submit '購入する', class: 'buy_btn', id: 'buy', data: { confirm: '購入しますか？' }

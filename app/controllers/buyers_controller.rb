@@ -1,6 +1,6 @@
 class BuyersController < ApplicationController
   require "payjp"
-  before_action :set_card, :set_item
+  before_action :set_card, :set_item, :set_address, :set_user
 
   def index
     unless user_signed_in?
@@ -41,8 +41,12 @@ class BuyersController < ApplicationController
       customer: Payjp::Customer.retrieve(@card.customer_id),
       currency: 'jpy'
     )
-    @item.update( buyer_id: current_user.id)
-    redirect_to root_path
+    if @item.update( buyer_id: current_user.id)
+      redirect_to root_path, notice: '商品を購入しました。'
+    else
+      flash.now[:alert] = '購入できませんでした。'
+      render :index
+    end
   end
 
   private
@@ -56,5 +60,13 @@ class BuyersController < ApplicationController
 
   def set_item
     @item = Item.find(params[:item_id])
+  end
+
+  def set_address
+    @address = Address.find_by(user_id: current_user.id)
+  end
+
+  def set_user
+    @user = User.find(current_user.id)
   end
 end
