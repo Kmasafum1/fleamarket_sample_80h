@@ -18,3 +18,4 @@
               %p.card-info__period 
               = @exp_month + " / " + @exp_year
               = button_to "削除する", card_path(@card), method: :delete, class:"card-info__delete", data: { confirm: '削除してよろしいですか？' }
+              = link_to "マイページに戻る", users_path, class: "my_page__btn"
