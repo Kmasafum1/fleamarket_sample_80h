@@ -3,13 +3,13 @@ class ItemsController < ApplicationController
 
   def index
     @parents = Category.where(ancestry: nil)
-    @items = Item.all
-    @items = Item.all.order('id DESC').limit(10)
+    @items = Item.all.order('id DESC').limit(5)
   end
 
   def new
     if user_signed_in?
       @item = Item.new
+      @item.build_brand
       @item.item_images.new
       @category = Category.where(ancestry: nil)
     else
@@ -18,7 +18,6 @@ class ItemsController < ApplicationController
   end
   
   def category_children
-    
     @category_chid = Category.find(params[:id]).children
   end
 
@@ -28,7 +27,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.user = current_user
+    @category = Category.where(ancestry: nil)
     if @item.save
       redirect_to root_path
     else
@@ -40,6 +39,7 @@ class ItemsController < ApplicationController
   end
 
   def update
+    @category = Category.where(ancestry: nil)
     if @item.update(item_params)
       redirect_to root_path
     else
@@ -62,7 +62,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :condition, :delivery_cost, :sipping_area, :sipping_days, :price, :category_id, :user_id, :brand_id, item_images_attributes: [:image, :_destroy, :id])
+    params.require(:item).permit(:name, :description, :condition, :delivery_cost, :sipping_area, :sipping_days, :price, :category_id, brand_attributes: [:id, :name], item_images_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
   end
   
   def set_item
