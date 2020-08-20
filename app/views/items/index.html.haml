@@ -16,7 +16,7 @@
           %ul.category__parent
             - @parents.each do |parent|
               %li.category__parent--name                 
-                = link_to parent.name, item_path, method: :get
+                = link_to parent.name, item_path(@item.id), method: :get
                 %ul.category__child
                   - parent.children.each do |child|
                     %li.category__child--name                     
