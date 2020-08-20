@@ -5,7 +5,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.text :description, null: false
       t.string :condition, null: false
       t.string :delivery_cost,  null: false
-      t.string :sipping_area, null: false
+      t.integer :sipping_area, null: false
       t.string :sipping_days, null: false
       t.integer :price, null: false
       t.references :category, null: false, foreign_key: true
