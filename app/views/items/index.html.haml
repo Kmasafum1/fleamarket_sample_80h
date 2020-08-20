@@ -16,7 +16,7 @@
           %ul.category__parent
             - @parents.each do |parent|
               %li.category__parent--name                 
-                = link_to parent.name, new_item_path
+                = link_to parent.name,  new_item_path
                 %ul.category__child
                   - parent.children.each do |child|
                     %li.category__child--name                     
