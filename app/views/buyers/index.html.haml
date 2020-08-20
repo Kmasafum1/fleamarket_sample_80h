@@ -6,22 +6,19 @@
           = image_tag ("logo.png"), class: "aBtn"
   .contents
     .content
-      = form_with url:pay_item_buyers_path(params[:item_id]), method: :post do |f|
+      = form_with url:pay_item_buyers_path(params[:item_id]), method: :post, local: "true" do |f|
         .content__top
-          %h2 
+          .content__top__title
             購入内容の確認
         .content__img
           .tagimg
             = image_tag "#{@item.item_images[0].image}", size: '200x150', class: 'buy-image'
           .textimg
             .textimg_name
-              %div 商品名:
+              %div 商品名
               = @item.name
-            .textimg_cost
-              %div 送料:
-              = @item.delivery_cost
             .amount
-              %div 支払い金額:
+              %div 支払い金額
               .integer
                 = "¥#{@item.price}"
         .content__payment
@@ -49,6 +46,7 @@
               = @address.address
               = @address.building_name
               .user_name
+                %br
                 %br
                 氏名:
                 = @user.last_name
