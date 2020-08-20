@@ -41,7 +41,8 @@
             .items-show-itemBox__pic
               = image_tag (@items.item_images.first.image.url);
             .items-show-itemBox__price
-              %span ￥
+              %span
+              ￥
               = @items.price.to_s(:delimited) 
               .items-show-itemBox__price__tax-shipfee
                 %span
@@ -58,7 +59,7 @@
                     %th
                       出品者
                     %td
-                      -# = @items.user.nickname
+                      = @items.seller.nickname
                   %tr    
                     %th
                       カテゴリー
