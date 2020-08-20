@@ -48,7 +48,7 @@ class ItemsController < ApplicationController
   end
   
   def show
-    @itemsss = Item.find(params[:id])
+    items = Item.find(params[:id])
   end
 
   def destroy
