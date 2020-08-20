@@ -44,12 +44,12 @@
       .required_item
         状態
         %span.necessary 必須
-      = f.select :condition, [["新品、未使用", 1],["未使用に近い", 2],["目立った傷汚れなし", 3],["やや傷や汚れあり", 4],["傷や汚れあり", 5],["全体的に状態が悪い", 6]], {prompt: "選択してください"}, {class: :condition}
+      = f.select :condition, [["新品、未使用"],["未使用に近い"],["目立った傷汚れなし"],["やや傷や汚れあり"],["傷や汚れあり"],["全体的に状態が悪い"]], {prompt: "選択してください"}, {class: :condition}
     .delivery
       .required_item
         配送料の負担
         %span.necessary 必須
-      = f.select :delivery_cost, [["送料込み(出品者負担)", 1],["着払い(購入者負担)", 2]], {prompt: "選択してください"}, {class: :cost}
+      = f.select :delivery_cost, [["送料込み(出品者負担)"],["着払い(購入者負担)"]], {prompt: "選択してください"}, {class: :cost}
       .required_item
         発送元の地域
         %span.necessary 必須
@@ -57,7 +57,7 @@
       .required_item
         発送までの日数
         %span.necessary 必須
-      = f.select :sipping_days, [["1〜2日で発送", 1],["2〜3日で発送", 2],["4〜7日で発送", 3]], {prompt: "選択してください"}, {class: :days}
+      = f.select :sipping_days, [["1〜2日で発送"],["2〜3日で発送"],["4〜7日で発送"]], {prompt: "選択してください"}, {class: :days}
     .price
       .required_item
         価格
