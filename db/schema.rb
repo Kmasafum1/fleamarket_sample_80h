@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_092254) do
     t.text "description", null: false
     t.string "condition", null: false
     t.string "delivery_cost", null: false
-    t.string "sipping_area", null: false
+    t.integer "sipping_area", null: false
     t.string "sipping_days", null: false
     t.integer "price", null: false
     t.bigint "category_id", null: false
