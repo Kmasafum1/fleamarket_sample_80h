@@ -31,7 +31,7 @@ $(function(){
       $('.categorygrandchild').empty();
       $('.categorygrandchild').append(`<option> 選択してください </option>`)
       children.forEach(function(child) {    
-        $('.categorygrandchild').append(`<option > ${child.name} </option>`) 
+        $('.categorygrandchild').append(`<option  value="${child.id}"> ${child.name} </option>`) 
       })
     });
   }))
