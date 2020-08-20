@@ -63,7 +63,6 @@
               = link_to "購入画面に進む", pay_cards_path, class: "products-show-itemBox__buy-btn"
             - else current_user.credit_card.blank?
               = link_to "購入画面に進む", new_card_path, data: { confirm: '【確認】クレジットカード登録が必要です。登録画面に移動しますか？' }, class: "items-show-itemBox__btn"    
-              -# = link_to "購入画面に進む", new_user_session_path, class: "items-show-itemBox__btn"      
             .items-show-details
               = @items.name
             .items-show-table
