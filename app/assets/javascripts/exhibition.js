@@ -29,7 +29,7 @@ $(function(){
     .done(function(children){ 
       $('.categorygrandchild').empty();
       children.forEach(function(child) {    
-        $('.categorygrandchild').append(`<option > ${child.name} </option>`) 
+        $('.categorygrandchild').append(`<option  value="${child.id}"> ${child.name} </option>`) 
       })
     });
   }))

@@ -25,7 +25,7 @@
                         - child.children.each do |grandchild|
                           %li.category__grandchild--name                             
                             = link_to grandchild.name, new_item_path
-           
+
         %li.leftTag2
           = link_to "" do
             ブランド     
@@ -167,21 +167,22 @@
         %h3.title
           = link_to "#" do
             アーカイバ
-      %ul.productLists
+      .productLists
         - @items.each do |item| 
-          %li.productList
-            .productList--image
-              = image_tag item.item_images[0].image, size: '220x150'
-              - if item.buyer_id.present?
-                .items-box_photo__sold   
-                  .items-box_photo__sold__inner SOLD
-            .productList--body
-              .name
-                - n = item.name
-                = "商品名：#{n}"
-              .deteails 
-                - p = item.price
-                = "価格：#{p}円"
+          = link_to item_path(item.id) do
+            .productList
+              .productList--image
+                = image_tag "#{item.item_images[0].image}", size: '220x150'
+                - if item.buyer_id.present?
+                  .items-box_photo__sold   
+                    .items-box_photo__sold__inner SOLD
+              .productList--body
+                .name
+                  - n = item.name
+                  = "商品名：#{n}"
+                .deteails 
+                  - p = item.price
+                  = "価格：#{p}円"
                 
 .banner
   .inner
