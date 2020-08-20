@@ -48,7 +48,8 @@ class ItemsController < ApplicationController
   end
   
   def show
-    items = Item.find(params[:id])
+    @items = Item.includes(:item_images).find(params[:id])
+    @category =Category.all
   end
 
   def destroy
