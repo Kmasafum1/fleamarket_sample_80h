@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create, :destroy, :show, :category_children, :category_grandchildren]
+  before_action :set_item, only: [:destroy, :edit, :update]
 
   def index
     @parents = Category.where(ancestry: nil)
@@ -48,6 +48,8 @@ class ItemsController < ApplicationController
   end
   
   def show
+    @items = Item.includes(:item_images).find(params[:id])
+    @category =Category.all
   end
 
   def destroy
