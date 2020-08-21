@@ -10,7 +10,7 @@
         = link_to new_user_registration_path, class: "login-noaccount__btn" do
           %br/
           新規会員登録
-        = form_for(@user, url: user_registration_path) do |f|
+        = form_for(@user, url: user_session_path) do |f|
           .single-form
             .field
               = f.email_field :email, autofocus: true, placeholder: "メールアドレス", autocomplete: "email", class: "email"
