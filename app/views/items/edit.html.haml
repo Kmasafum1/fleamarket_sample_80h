@@ -1,1 +1,90 @@
-= render partial: 'form'
+.body
+  .exhibition_header
+    .icon
+      = link_to root_path do
+        = image_tag ("logo.png")
+  = form_with model: @item, class: "exhibition_main", id: "item-form", local: "true" do |f|
+    = render 'layouts/error_messages', model: f.object
+    .image
+      .required_item
+        出品画像
+        %span.necessary 必須
+      .image_explanation
+        最大5枚までアップロード
+      .items_edit-image
+        .items_edit-image-box
+          .items_edit-content
+            - if @item.persisted?
+              - @item.item_images.each_with_index do |image, i|
+                .items_edit-preview-box{"data-index" => "#{i}"}
+                  .items_edit-upper-box
+                    = image_tag image.image.url, width: "100", height: "100", alt: "preview", class: "items_edit-input_images"
+                    .items_edit-js-remove
+                      削除
+            = f.fields_for :item_images do |image|
+              - if @item.persisted?
+                = image.check_box :_destroy, class: "delete-check-box-#{image.index}", style:"display:none;"
+          .items_edit-lower-box
+            %label.items_edit-lower-box__label
+              .items_edit-js-file_group{"data-index" => "#{@item.item_images.count}"}
+                = f.file_field :image, name: "item[item_images_attributes][#{@item.item_images.count}][image]", id: "items_images_attributes_#{@item.item_images.count}_image", class: 'items_edit-js-file', style: "display:none"
+    .item
+      .required_item
+        商品名
+        %span.necessary 必須
+      = f.text_field :name, class: "item_name"
+      .required_item
+        商品の説明
+        %span.necessary 必須
+      = f.text_area :description, class: "item_explanation"
+    .categories
+      .required_item
+        カテゴリー
+        %span.necessary 必須
+      = f.collection_select :category_id, @category, :id, :name, {prompt: "選択してください"}, {class: "category"}
+      = f.collection_select :category_id, @category, :id, :name, {prompt: "選択してください"}, {class: "categorychild"}
+      = f.collection_select :category_id, @category, :id, :name, {prompt: "選択してください"}, {class: "categorygrandchild"}
+      .required_item
+        ブランド
+        %span.necessary_brand 任意
+      = f.fields_for :brand do |brand|
+        = brand.text_field :name, placeholder: "例）シャネル", value: "",class: "brand_name"
+      /= f.text_field :brand_id, class: "brand_name"
+      .required_item
+        状態
+        %span.necessary 必須
+      = f.select :condition, [["新品、未使用"],["未使用に近い"],["目立った傷汚れなし"],["やや傷や汚れあり"],["傷や汚れあり"],["全体的に状態が悪い"]], {prompt: "選択してください"}, {class: :condition}
+    .delivery
+      .required_item
+        配送料の負担
+        %span.necessary 必須
+      = f.select :delivery_cost, [["送料込み(出品者負担)"],["着払い(購入者負担)"]], {prompt: "選択してください"}, {class: :cost}
+      .required_item
+        発送元の地域
+        %span.necessary 必須
+      = f.select :sipping_area, Item.sipping_areas.keys, {prompt: "選択してください"}, {class: :area}
+      .required_item
+        発送までの日数
+        %span.necessary 必須
+      = f.select :sipping_days, [["1〜2日で発送"],["2〜3日で発送"],["4〜7日で発送"]], {prompt: "選択してください"}, {class: :days}
+    .price
+      .required_item
+        価格
+        %span.necessary 必須
+      .saleprice
+        %span ¥
+        =f.number_field :price, class:"input_price"
+    .exhibition
+      .exhibition_content
+        = f.submit "変更する", class: "execution"
+        %button{class: "return", type: "submit", url: "/"}もどる
+      .precautions 禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+  .exhibition_footer
+    %ul.term_list
+      %li= link_to "プライバシーポリシー"
+      %li= link_to "FURIMA利用規約"
+      %li= link_to "特定商取引に関する表記"
+    .icon
+      = link_to root_path do
+        = image_tag ("logo.png")
+    %p.copyright © FURIMA, Inc.

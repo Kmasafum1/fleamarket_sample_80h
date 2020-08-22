@@ -34,24 +34,32 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-
-  def edit
-  end
-
-  def update
-    @category = Category.where(ancestry: nil)
-    if @item.update(item_params)
-      redirect_to root_path
-    else
-      render :edit
-    end
-  end
   
   def show
     @items = Item.includes(:item_images).find(params[:id])
     @category =Category.all
   end
-
+  
+  def edit
+    @items = Item.includes(:item_images).find(params[:id])
+    @category =Category.all
+  end
+  
+  def update
+    item = Item.find(params[:id])
+    if item.seller_id == current_user.id
+      if item.update(item_params)
+        redirect_to item_path(item.id)
+      else
+        flash[:alert] = '投稿に失敗しました'
+        redirect_to action: 'edit'
+      end
+    else
+      flash[:alert] = '投稿に失敗しました'
+      redirect_to action: 'edit'
+    end
+  end
+  
   def destroy
     if @item.destroy
       redirect_to root_path
