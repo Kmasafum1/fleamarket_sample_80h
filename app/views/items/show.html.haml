@@ -37,21 +37,35 @@
         .items-show-contents__topContent
           .items-show-itemBox
             .items-show-itemBox__name
-              = @items.name
+              = @item.name
             .items-show-itemBox__pic
-              = image_tag (@items.item_images.first.image.url);
+              = image_tag (@item.item_images.first.image.url);
             .items-show-itemBox__price
               %span
               ￥
-              = @items.price.to_s(:delimited) 
+              = @item.price.to_s(:delimited) 
               .items-show-itemBox__price__tax-shipfee
                 %span
                   (税込)
                 %span
                   送料込み
-              = link_to "購入画面に進む", new_user_session_path, class: "items-show-itemBox__btn"      
+            - if user_signed_in? && current_user.id == @item.seller_id
+              .l-single-container
+                .listing-item-change-box
+                  = link_to "商品の編集", edit_item_path, class: "items-show-itemBox__btn"
+                  -# %p.text-center 
+                  -# or
+                  = link_to "この商品を削除する", item_path, method: :delete, data: { confirm: '【確認】削除すると二度と復活できません。本当に削除しますか？' }, class: "items-show-itemBox__btn"
+            - elsif @item.buyer_id.present? 
+              .items-show-itemBox__btn-grey 売り切れました
+            - elsif current_user.blank?
+              = link_to "購入画面に進む", new_user_session_path, data: { confirm: '【確認】購入はログインが必要です。移動しますか？' }, class: "items-show-itemBox__btn"
+            - elsif current_user.card.present?
+              = link_to "購入画面に進む", item_buyers_path(@item.id), class: "items-show-itemBox__btn"
+            - else current_user.card.blank?
+              = link_to "購入画面に進む", new_card_path, data: { confirm: '【確認】クレジットカード登録が必要です。登録画面に移動しますか？' }, class: "items-show-itemBox__btn"    
             .items-show-details
-              = @items.name
+              = @item.name
             .items-show-table
               %table
                 %tbody
@@ -59,36 +73,36 @@
                     %th
                       出品者
                     %td
-                      = @items.seller.nickname
+                      = @item.seller.nickname
                   %tr    
                     %th
                       カテゴリー
                     %td
-                      =link_to @category.find(@items.category_id).parent.parent.name
+                      =link_to @category.find(@item.category_id).parent.parent.name
                       %br
-                      =link_to @category.find(@items.category_id).parent.name
+                      =link_to @category.find(@item.category_id).parent.name
                       %br
-                      =link_to @category.find(@items.category_id).name
+                      =link_to @category.find(@item.category_id).name
                   %tr  
                     %th
                       商品の状態
                     %td
-                      = @items.condition
+                      = @item.condition
                   %tr    
                     %th
                       配送料の負担
                     %td
-                      = @items.delivery_cost
+                      = @item.delivery_cost
                   %tr    
                     %th
                       発送元の地域
                     %td
-                      = @items.sipping_area
+                      = @item.sipping_area
                   %tr    
                     %th
                       発送日の目安
                     %td
-                      = @items.sipping_days
+                      = @item.sipping_days
             .optionalBtn
               = link_to "/" do
                 %i.fa.fa-flag
@@ -96,8 +110,8 @@
           -# .items-show-link
           -#   %ul.links
           -#     %li
-          -#       - if @items.previous.present?
-          -#         = link_to items_path(@items.previous.id), class: 'link' do
+          -#       - if @item.previous.present?
+          -#         = link_to items_path(@item.previous.id), class: 'link' do
           -#           %i.fa.fa-angle-left
           -#           前の商品
           -#     %li

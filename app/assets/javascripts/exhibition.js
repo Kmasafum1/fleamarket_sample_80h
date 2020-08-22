@@ -14,6 +14,8 @@ $(function(){
       children.forEach(function(child) {
         $('.categorychild').append(`<option value="${child.id}"> ${child.name} </option>`)
       })
+      $('.categorygrandchild').empty();
+      $('.categorygrandchild').append(`<option> 選択してください </option>`)
     });
   }))
 })
@@ -28,8 +30,6 @@ $(function(){
       dataType: 'json'
     })
     .done(function(children){ 
-      $('.categorygrandchild').empty();
-      $('.categorygrandchild').append(`<option> 選択してください </option>`)
       children.forEach(function(child) {    
         $('.categorygrandchild').append(`<option  value="${child.id}"> ${child.name} </option>`) 
       })
