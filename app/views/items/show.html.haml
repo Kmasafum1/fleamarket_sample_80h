@@ -65,7 +65,7 @@
             - else current_user.card.blank?
               = link_to "購入画面に進む", new_card_path, data: { confirm: '【確認】クレジットカード登録が必要です。登録画面に移動しますか？' }, class: "items-show-itemBox__btn"    
             .items-show-details
-              = @item.name
+              = @item.description
             .items-show-table
               %table
                 %tbody
