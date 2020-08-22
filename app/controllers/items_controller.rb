@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create, :show, :edit, :destroy, :category_children, :category_grandchildren, :show]
+  before_action :set_item, except: [:index, :new, :create, :show, :edit, :destroy, :category_children, :category_grandchildren]
   before_action :set_item, only: [:destroy, :edit, :update, :show]
+  before_action :set_category, only: [:show, :edit, :update]
 
   def index
     @parents = Category.where(ancestry: nil)
@@ -43,10 +44,10 @@ class ItemsController < ApplicationController
   end
   
   def update
-    item = Item.find(params[:id])
-    if item.seller_id == current_user.id
-      if item.update(item_params)
-        redirect_to item_path(item.id)
+    @item = Item.find(params[:id])
+    if @item.seller_id == current_user.id
+      if @item.update(item_params)
+        redirect_to item_path(@item.id)
       else
         flash[:alert] = '投稿に失敗しました'
         redirect_to action: 'edit'
@@ -58,8 +59,8 @@ class ItemsController < ApplicationController
   end
   
   def destroy
-    item = Item.find(params[:id])
-    item.destroy
+    @item = Item.find(params[:id])
+    @item.destroy
     redirect_to root_path
   end
 
@@ -71,6 +72,10 @@ class ItemsController < ApplicationController
   
   def set_item
     @item = Item.find(params[:id])
+  end
+  
+  def set_category
     @categories =Category.all
   end
+
 end
