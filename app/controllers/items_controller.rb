@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create, :show, :edit, :destroy, :category_children, :category_grandchildren]
   before_action :set_item, only: [:destroy, :edit, :update, :show]
-  before_action :set_category, only: [:show, :edit, :update]
+  before_action :set_categories, only: [:show, :edit, :update]
 
   def index
     @parents = Category.where(ancestry: nil)
@@ -74,7 +74,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
   
-  def set_category
+  def set_categories
     @categories =Category.all
   end
 
