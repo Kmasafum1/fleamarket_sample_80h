@@ -49,7 +49,21 @@
                   (税込)
                 %span
                   送料込み
-              = link_to "購入画面に進む", new_user_session_path, class: "items-show-itemBox__btn"      
+            - if user_signed_in? && current_user.id == @item.seller_id
+              .l-single-container
+                .listing-item-change-box
+                  = link_to "商品の編集", edit_item_path, class: "items-show-itemBox__btn"
+                  -# %p.text-center 
+                  -# or
+                  = link_to "この商品を削除する", item_path, method: :delete, data: { confirm: '【確認】削除すると二度と復活できません。本当に削除しますか？' }, class: "items-show-itemBox__btn"
+            - elsif @item.buyer_id.present? 
+              .items-show-itemBox__btn-grey 売り切れました
+            - elsif current_user.blank?
+              = link_to "購入画面に進む", new_user_session_path, data: { confirm: '【確認】購入はログインが必要です。移動しますか？' }, class: "items-show-itemBox__btn"
+            - elsif current_user.card.present?
+              = link_to "購入画面に進む", item_buyers_path(@item.id), class: "items-show-itemBox__btn"
+            - else current_user.card.blank?
+              = link_to "購入画面に進む", new_card_path, data: { confirm: '【確認】クレジットカード登録が必要です。登録画面に移動しますか？' }, class: "items-show-itemBox__btn"    
             .items-show-details
               = @item.name
             .items-show-table
@@ -96,8 +110,8 @@
           -# .items-show-link
           -#   %ul.links
           -#     %li
-          -#       - if @items.previous.present?
-          -#         = link_to items_path(@items.previous.id), class: 'link' do
+          -#       - if @item.previous.present?
+          -#         = link_to items_path(@item.previous.id), class: 'link' do
           -#           %i.fa.fa-angle-left
           -#           前の商品
           -#     %li

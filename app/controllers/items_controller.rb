@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create, :show, :edit, :destroy, :category_children, :category_grandchildren, :show]
-  before_action :set_item, only: [:show, :edit]
+  before_action :set_item, only: [:destroy, :edit, :update, :show]
 
   def index
     @parents = Category.where(ancestry: nil)
@@ -58,11 +58,9 @@ class ItemsController < ApplicationController
   end
   
   def destroy
-    if @item.destroy
-      redirect_to root_path
-    else
-      render :edit
-    end
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to root_path
   end
 
   private
