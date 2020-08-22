@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create, :destroy, :category_children, :category_grandchildren, :show]
+  before_action :set_item, except: [:index, :new, :create, :show, :edit, :destroy, :category_children, :category_grandchildren, :show]
+  before_action :set_item, only: [:show, :edit]
 
   def index
     @parents = Category.where(ancestry: nil)
@@ -36,13 +37,9 @@ class ItemsController < ApplicationController
   end
   
   def show
-    @items = Item.includes(:item_images).find(params[:id])
-    @category =Category.all
   end
   
   def edit
-    @items = Item.includes(:item_images).find(params[:id])
-    @category =Category.all
   end
   
   def update
@@ -76,5 +73,6 @@ class ItemsController < ApplicationController
   
   def set_item
     @item = Item.find(params[:id])
+    @categories =Category.all
   end
 end

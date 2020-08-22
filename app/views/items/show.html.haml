@@ -37,13 +37,13 @@
         .items-show-contents__topContent
           .items-show-itemBox
             .items-show-itemBox__name
-              = @items.name
+              = @item.name
             .items-show-itemBox__pic
-              = image_tag (@items.item_images.first.image.url);
+              = image_tag (@item.item_images.first.image.url);
             .items-show-itemBox__price
               %span
               ￥
-              = @items.price.to_s(:delimited) 
+              = @item.price.to_s(:delimited) 
               .items-show-itemBox__price__tax-shipfee
                 %span
                   (税込)
@@ -51,7 +51,7 @@
                   送料込み
               = link_to "購入画面に進む", new_user_session_path, class: "items-show-itemBox__btn"      
             .items-show-details
-              = @items.name
+              = @item.name
             .items-show-table
               %table
                 %tbody
@@ -59,36 +59,36 @@
                     %th
                       出品者
                     %td
-                      = @items.seller.nickname
+                      = @item.seller.nickname
                   %tr    
                     %th
                       カテゴリー
                     %td
-                      =link_to @category.find(@items.category_id).parent.parent.name
+                      =link_to @categories.find(@item.category_id).parent.parent.name
                       %br
-                      =link_to @category.find(@items.category_id).parent.name
+                      =link_to @categories.find(@item.category_id).parent.name
                       %br
-                      =link_to @category.find(@items.category_id).name
+                      =link_to @categories.find(@item.category_id).name
                   %tr  
                     %th
                       商品の状態
                     %td
-                      = @items.condition
+                      = @item.condition
                   %tr    
                     %th
                       配送料の負担
                     %td
-                      = @items.delivery_cost
+                      = @item.delivery_cost
                   %tr    
                     %th
                       発送元の地域
                     %td
-                      = @items.sipping_area
+                      = @item.sipping_area
                   %tr    
                     %th
                       発送日の目安
                     %td
-                      = @items.sipping_days
+                      = @item.sipping_days
             .optionalBtn
               = link_to "/" do
                 %i.fa.fa-flag

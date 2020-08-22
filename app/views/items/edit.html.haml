@@ -41,9 +41,9 @@
       .required_item
         カテゴリー
         %span.necessary 必須
-      = f.collection_select :category_id, @category, :id, :name, {prompt: "選択してください"}, {class: "category"}
-      = f.collection_select :category_id, @category, :id, :name, {prompt: "選択してください"}, {class: "categorychild"}
-      = f.collection_select :category_id, @category, :id, :name, {prompt: "選択してください"}, {class: "categorygrandchild"}
+      = f.collection_select :category_id, @categories, :id, :name, {prompt: "選択してください"}, {class: "category"}
+      = f.collection_select :category_id, @categories, :id, :name, {prompt: "選択してください"}, {class: "categorychild"}
+      = f.collection_select :category_id, @categories, :id, :name, {prompt: "選択してください"}, {class: "categorygrandchild"}
       .required_item
         ブランド
         %span.necessary_brand 任意
