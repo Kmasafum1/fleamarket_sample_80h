@@ -6,9 +6,10 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :brand
   # optional: tureは最終的に外す。今はこれがないとテーブルに保存できないので
   belongs_to :category
-  belongs_to :seller, class_name: "User"
-  belongs_to :buyer, optional:true, class_name: "User"
+  belongs_to :seller, class_name: "User", foreign_key: "seller_id"
+  belongs_to :buyer, optional:true, class_name: "User", foreign_key: "buyer_id"
 
+  validates :name, :description, :condition, :category_id, :delivery_cost, :sipping_area, :sipping_days, :price, :seller_id, presence: true
   validates_presence_of :item_images
 
   enum sipping_area:{
