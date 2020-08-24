@@ -1,10 +1,8 @@
 class Item < ApplicationRecord
   has_many :item_images, dependent: :destroy
   accepts_nested_attributes_for :item_images, allow_destroy: true
-  # optional: tureは最終的に外す。今はこれがないとテーブルに保存できないので
   belongs_to :brand, optional: true
   accepts_nested_attributes_for :brand
-  # optional: tureは最終的に外す。今はこれがないとテーブルに保存できないので
   belongs_to :category
   belongs_to :seller, class_name: "User", foreign_key: "seller_id"
   belongs_to :buyer, optional:true, class_name: "User", foreign_key: "buyer_id"
