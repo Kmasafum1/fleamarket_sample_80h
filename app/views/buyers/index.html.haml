@@ -15,10 +15,13 @@
             = image_tag "#{@item.item_images[0].image}", size: '200x150', class: 'buy-image'
           .textimg
             .textimg_name
-              %div 商品名
-              = @item.name
+              .item_content
+                %div 商品名
+              .item_name
+                = @item.name
             .amount
-              %div 支払い金額
+              .amount_content
+                %div 支払い金額
               .integer
                 = "¥#{@item.price}"
         .content__payment

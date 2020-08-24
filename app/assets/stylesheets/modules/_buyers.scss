@@ -52,12 +52,21 @@
           width: 330px;
           height: 80px;
           margin-left: 16px;
-          .textimg_name, .textimg_cost, .amount {
+          .textimg_name, .amount {
             margin: 5px;
             display: flex;
             justify-content: space-between;
+            .item_content, .item_name, .amount_content, .integer {
+              width: 160px;
+              height: 30px;
+              overflow: scroll;
+            }
+            .item_name {
+              text-align: right;
+            }
             .integer {
               font-weight: bold;
+              text-align: right;
             }
           }
         }
