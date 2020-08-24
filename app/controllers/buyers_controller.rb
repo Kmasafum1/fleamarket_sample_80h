@@ -1,13 +1,9 @@
 class BuyersController < ApplicationController
   require "payjp"
+  before_action :authenticate_user!, only: [:index]
   before_action :set_card, :set_item, :set_address, :set_user
 
   def index
-    unless user_signed_in?
-      redirect_to user_session_path
-      return
-    end
- 
     return redirect_to new_card_path if @card.blank?
     return redirect_to root_path if @item.buyer_id.present?
     return redirect_to root_path if @item.seller_id == current_user.id
