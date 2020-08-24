@@ -8,9 +8,9 @@ class BuyersController < ApplicationController
       return
     end
  
-    if @card.blank?
-      redirect_to new_card_path
-    else
+    return redirect_to new_card_path if @card.blank?
+    return redirect_to root_path if @item.buyer_id.present?
+    return redirect_to root_path if @item.seller_id == current_user.id
       Payjp.api_key = Rails.application.credentials.PAYJP[:secret_access_key]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @card_info = customer.cards.retrieve(customer.default_card)
@@ -31,10 +31,10 @@ class BuyersController < ApplicationController
       when "Discover"
         @card_image = "discover.png"
       end
-    end
   end
 
   def pay
+
     Payjp.api_key = Rails.application.credentials.PAYJP[:secret_access_key]
     charge = Payjp::Charge.create(
       amount: @item.price,
