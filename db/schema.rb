@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_10_092254) do
+ActiveRecord::Schema.define(version: 2020_08_24_072641) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture", null: false
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2020_08_10_092254) do
     t.string "last_name"
     t.string "first_name_kana"
     t.string "last_name_kana"
-    t.integer "birthday"
+    t.date "birthday"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
