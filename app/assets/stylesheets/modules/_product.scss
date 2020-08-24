@@ -25,6 +25,15 @@ body{
   }
   &__pic{
     text-align: center;
+
+    ul {
+      display: flex;
+      justify-content: center;
+      
+      li {
+        margin: 5px;
+      }
+    }
   }
   &__price{
     margin: 24px 0 24px;
