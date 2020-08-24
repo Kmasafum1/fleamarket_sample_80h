@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create, :show, :edit, :destroy, :category_children, :category_grandchildren]
   before_action :set_item, only: [:destroy, :edit, :update, :show]
   before_action :set_categories, only: [:show, :edit, :update]
+  before_action :authenticate_user!, only: [:new, :edit]
 
   def index
     @parents = Category.where(ancestry: nil)
@@ -9,14 +10,10 @@ class ItemsController < ApplicationController
   end
 
   def new
-    if user_signed_in?
       @item = Item.new
       @item.build_brand
       @item.item_images.new
       @category = Category.where(ancestry: nil)
-    else
-      redirect_to root_path
-    end
   end
   
   def category_children
