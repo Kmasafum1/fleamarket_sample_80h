@@ -39,7 +39,14 @@
             .items-show-itemBox__name
               = @item.name
             .items-show-itemBox__pic
-              = image_tag (@item.item_images.first.image.url);
+              %ul
+                %li
+                  = image_tag @item.item_images.first.image.url, width: "400px"
+                  %ul
+                    - @item.item_images.each do |i|
+                      %li
+                        = image_tag i.image.url, width: "120", height: "100"
+
             .items-show-itemBox__price
               %span
               ￥
