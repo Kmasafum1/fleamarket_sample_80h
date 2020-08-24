@@ -10,10 +10,10 @@ class ItemsController < ApplicationController
   end
 
   def new
-      @item = Item.new
-      @item.build_brand
-      @item.item_images.new
-      @category = Category.where(ancestry: nil)
+    @item = Item.new
+    @item.build_brand
+    @item.item_images.new
+    @category = Category.where(ancestry: nil)
   end
   
   def category_children
