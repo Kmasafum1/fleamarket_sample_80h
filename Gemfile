@@ -74,6 +74,7 @@ gem 'mini_magick'
 gem 'jquery-rails'
 gem 'ancestry'
 gem 'payjp'
+gem 'gretel'
 
 group :production do
   gem 'unicorn'
