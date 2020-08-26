@@ -1,14 +1,18 @@
 .header
   .header__logo
     = link_to root_path do
-      =image_tag("logo.png", size: "180x50")
+      =image_tag("logo.png", size: "220x70")
+
+.breadcrumbs
+  - breadcrumb :card_show
+  = breadcrumbs pretext: "", separator: "&rsaquo;", class: "breadcrumbs-list"
 
 .mypage-main
-  %h2.header_title
+  .header_title
     支払い方法
     .single-container
       %section.card_section
-        %h3 クレジットカード一覧
+        %h3 クレジットカード詳細
         - if @card.present?
           .container
             .card-info

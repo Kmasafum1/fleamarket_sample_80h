@@ -3,6 +3,9 @@
     .icon
       = link_to root_path do
         = image_tag ("logo.png")
+  .breadcrumbs
+    - breadcrumb :item_edit
+    = breadcrumbs pretext: "", separator: "&rsaquo;", class: "breadcrumbs-list"
   = form_with model: @item, class: "exhibition_main", id: "item-form", local: "true" do |f|
     = render 'layouts/error_messages', model: f.object
     .image

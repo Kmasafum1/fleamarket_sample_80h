@@ -10,6 +10,9 @@
             = form.text_field :keyword, placeholder: "キーワードから探す", class: "searchBox-input"
             = button_tag type: 'submit', class: 'search-btn' do
               %i.fas.fa-search
+      .breadcrumbs
+        - breadcrumb :item_show
+        = breadcrumbs pretext: "", separator: "&rsaquo;", class: "breadcrumbs-list"
       .headerInner__nav
         %ul.leftTag
           %li.leftTag1
